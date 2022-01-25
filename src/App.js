@@ -1,7 +1,9 @@
-function App() {
-  return (
-  <h1>Hw :)</h1>
-  );
-}
+import React from 'react';
+import RoutesForGame from './routes';
+import './style/global.css'
 
-export default App;
+export default function App() {
+   return (
+       <RoutesForGame />
+   );
+}

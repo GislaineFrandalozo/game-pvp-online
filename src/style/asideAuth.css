@@ -1,0 +1,8 @@
+:root{
+    --background-aside: rgb(121, 30, 156);
+}
+aside{
+    height: 100%;
+    width: 57%;
+    background-color: var(--background-aside)
+}
