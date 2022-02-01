@@ -5,22 +5,29 @@ import { Button, Stack } from 'react-bootstrap'
 import FormGame from "./form";
 
 export default function MainForm(props) {
-    React.useEffect(() => {
-        console.log("montou")
-        return () => console.log("desmontou")
-    }, [])
-
     let navigate = useNavigate();
     let inputs, navigateToPage, handleSubmit;
     if (props.stateForm === "login") {
         inputs = [
             {
-                label: "Email",
-                type: "text"
+               
+                type: "text",
+                validate: {
+                    required: true,
+                    min: "2",
+                    max: "8",
+                  feedback: "Este campo é obrigatório"
+                } 
             },
             {
                 label: "Password",
-                type: "password"
+                type: "password",
+                validate: {
+                    required: true,
+                    min: "2",
+                    max: "8",
+                    feedback: "Este campo é obrigatório"
+                } 
             },
         ]
         navigateToPage = {

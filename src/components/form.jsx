@@ -1,19 +1,32 @@
 import axios, { Axios } from 'axios';
 import { Button, Form } from 'react-bootstrap'
+import { useState } from 'react';
+
 
 import Input from './input';
 
 export default function FormGame(props) {
+    const [validated, setValidated] = useState(false);
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event)
-
-        for( let i = 0; i < props.inputsAtt.length; i++){
-            console.log(event.target[i].value)
-        }
-        console.log(event)
+        console.log(event.currentTarget.checkValidity)
+        const metadatas = []
+        
         try {
+            for( let i = 0; i < props.inputsAtt.length; i++){
+    
+                console.log(event.target[i].value)
+                if(event.target[i].checkValidity() === false){
+                    event.stopPropagation();
+                    setValidated(true);
+                    throw "ERROR ERROR ERROR"
+                }else{
+                    metadatas.push(event.target[i].value)
+                    setValidated(true);
+                }
+            }
+            console.log(metadatas)
             console.log("axios aqui")
             axios.post('http://localhost:3001/sign-in', {
                 email: 'teste@teste.com',
@@ -31,7 +44,7 @@ export default function FormGame(props) {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Input metadatas={props.inputsAtt} />
             <Button type="submit">Submit form</Button>
         </Form>
