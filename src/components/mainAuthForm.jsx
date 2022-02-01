@@ -1,17 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Form from "./form";
-import '../style/mainAuthForm.css'
+import { Button, Stack } from 'react-bootstrap'
+
+import FormGame from "./form";
 
 export default function MainForm(props) {
-    React.useEffect(() =>{
+    React.useEffect(() => {
         console.log("montou")
         return () => console.log("desmontou")
-        }, [])
+    }, [])
 
     let navigate = useNavigate();
     let inputs, navigateToPage, handleSubmit;
-    if(props.stateForm === "login") {
+    if (props.stateForm === "login") {
         inputs = [
             {
                 label: "Email",
@@ -26,10 +27,10 @@ export default function MainForm(props) {
             text: "Ainda não possui cadastro ?",
             button: "clique aqui",
             page: "sign-up",
-            handleClick: () => {  navigate(`/${navigateToPage.page}`);}
+            handleClick: () => { navigate(`/${navigateToPage.page}`); }
         };
-        }
-    if(props.stateForm === "sign-up") {
+    }
+    if (props.stateForm === "sign-up") {
         inputs = [
             {
                 label: "Nick name",
@@ -55,20 +56,21 @@ export default function MainForm(props) {
         navigateToPage = {
             text: "Já possui cadastro ?",
             button: "Faça login aqui",
-            handleClick: () => {  navigate(`/`);}
+            handleClick: () => { navigate(`/`); }
         };
     };
     return (
-        <main>
-            <div className="alignItensForm">
-           <h3>{props.title}</h3>
-           <Form inputsAtt={inputs} state={props.stateForm}/>
-           </div>
-           <div className="navigateToPage">
-               <p>{navigateToPage.text}</p>
-           <button onClick={navigateToPage.handleClick}>{navigateToPage.button}</button>
-           </div>
-        </main>
+        <Stack gap={3}>
+
+            <h3>{props.title}</h3>
+
+            <FormGame inputsAtt={inputs} state={props.stateForm} />
+
+            <div >
+                <p>{navigateToPage.text}</p>
+                <Button onClick={navigateToPage.handleClick}>{navigateToPage.button}</Button>
+            </div>
+        </Stack>
     )
 
 }

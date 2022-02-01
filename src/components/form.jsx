@@ -1,15 +1,18 @@
 import axios, { Axios } from 'axios';
-import Input from './input';
-import '../style/form.css'
+import { Button, Form } from 'react-bootstrap'
 
-export default function Form(props) {
-    const axios = require('axios').default;
+import Input from './input';
+
+export default function FormGame(props) {
     
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(event)
+
         for( let i = 0; i < props.inputsAtt.length; i++){
             console.log(event.target[i].value)
         }
+        console.log(event)
         try {
             console.log("axios aqui")
             axios.post('http://localhost:3001/sign-in', {
@@ -28,9 +31,9 @@ export default function Form(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <Input att={props.inputsAtt} />
-            <input type="submit" value="Enviar" />
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Input metadatas={props.inputsAtt} />
+            <Button type="submit">Submit form</Button>
+        </Form>
     )
 }

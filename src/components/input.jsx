@@ -1,14 +1,16 @@
-import '../style/inputForm.css'
-export default function Input(props) {
-    
-    const array = props.att
-  
-    const inputs = array.map((component, index) => {  
-      
+import { Col, Form } from "react-bootstrap"
+
+export default function Input({ metadatas = [{ label: "title", type: "text" }] }) {
+
+    const inputs = metadatas.map((component, index) => {
+
         return (
-            <label key={index}>{component.label}
-                <input type={component.type} name={index} />
-            </label>
+            <Form.Group key={index}>
+                <Form.Label as={Col}>
+                    {component.label}
+                </Form.Label>
+                <Form.Control type={component.type} name={index} />
+            </Form.Group>
         )
     })
     return (inputs)

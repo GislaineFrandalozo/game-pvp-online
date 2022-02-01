@@ -1,4 +1,4 @@
 import "../style/asideAuth.css"
 export default function AsideAuth() {
-    return <aside />
+    return <aside className="bg-dark bg-gradient" />
 }
