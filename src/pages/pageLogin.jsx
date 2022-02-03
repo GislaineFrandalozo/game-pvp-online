@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import AsideAuth from "../components/asideAuth";
 import MainForm from "../components/mainAuthForm";
-// STYLES
-import '../style/authGlobal.css'
 
 export default function PageLogin() {
+    const route = "sign-in"
     let navigate = useNavigate();
     const defaultFeedback = "Este campo é obrigatório."
 
@@ -15,6 +14,7 @@ export default function PageLogin() {
         {
             label: "Email",
             type: "text",
+            nameAtributeRequest: "email",
             validate: {
                 required: true,
                 min: "10",
@@ -27,6 +27,7 @@ export default function PageLogin() {
         {
             label: "Senha",
             type: "password",
+            nameAtributeRequest: "password",
             validate: {
                 required: true,
                 min: "5",
@@ -44,13 +45,13 @@ export default function PageLogin() {
         handleClick: () => { navigate(`/${navigateToPage.page}`); }
     };
     return (
-        <Container fluid id={"auth-template-page"}>
+        <Container fluid >
             <Row>
-                <Col>
+                <Col xs={4} sm={5} className="bg-dark bg-gradient">
                     <AsideAuth />
                 </Col>
                 <Col>
-                    <MainForm title={"Login"} navigate={navigateToPage} imputAtributes={imputsForm} />
+                    <MainForm request={route} title={"Login"} navigate={navigateToPage} imputAtributes={imputsForm} />
                 </Col>
             </Row>
         </Container>

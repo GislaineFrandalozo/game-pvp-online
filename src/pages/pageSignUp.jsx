@@ -4,11 +4,9 @@ import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import AsideAuth from "../components/asideAuth";
 import MainForm from "../components/mainAuthForm";
-// STYLES
-import '../style/authGlobal.css'
 
 export default function PageSignUp() {
-
+    const route = "sign-up"
     let navigate = useNavigate();
     const defaultFeedback = "Este campo é obrigatório."
 
@@ -16,6 +14,7 @@ export default function PageSignUp() {
         {
             label: "Nome",
             type: "text",
+            nameAtributeRequest: "name",
             validate: {
                 required: true,
                 min: "3",
@@ -28,6 +27,7 @@ export default function PageSignUp() {
         {
             label: "Email",
             type: "text",
+            nameAtributeRequest: "email",
             validate: {
                 required: true,
                 min: "10",
@@ -40,6 +40,7 @@ export default function PageSignUp() {
         {
             label: "Data de nascimento",
             type: "date",
+            nameAtributeRequest: "birthdate",
             validate: {
                 required: true,
                 min: "0",
@@ -52,6 +53,7 @@ export default function PageSignUp() {
         {
             label: "Senha",
             type: "password",
+            nameAtributeRequest: "password",
             validate: {
                 required: true,
                 min: "5",
@@ -64,6 +66,7 @@ export default function PageSignUp() {
         {
             label: "Imagem de perfil",
             type: "file",
+            nameAtributeRequest: "photo",
             validate: {
                 required: true,
                 min: "0",
@@ -79,7 +82,7 @@ export default function PageSignUp() {
                 reader.onloadend = function () {
                     preview.src = reader.result;
                     console.log(e.target.value)
-                    e.target.value = reader.result;
+        
 
                 }
 
@@ -100,13 +103,13 @@ export default function PageSignUp() {
     };
 
     return (
-        <Container fluid id={"auth-template-page"}>
+        <Container fluid >
             <Row>
-                <Col >
+                <Col xs={4} sm={5} className="bg-dark bg-gradient" >
                     <AsideAuth />
                 </Col>
                 <Col>
-                    <MainForm title={"Cadastro"} navigate={navigateToPage} imputAtributes={imputsForm} />
+                    <MainForm request={route} title={"Cadastro"} navigate={navigateToPage} imputAtributes={imputsForm} />
                 </Col>
             </Row>
         </Container>
