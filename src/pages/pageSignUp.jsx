@@ -10,7 +10,7 @@ export default function PageSignUp() {
     let navigate = useNavigate();
     const defaultFeedback = "Este campo é obrigatório."
 
-    const imputsForm = [
+    const inputsForm = [
         {
             label: "Nome",
             type: "text",
@@ -109,7 +109,7 @@ export default function PageSignUp() {
                     <AsideAuth />
                 </Col>
                 <Col>
-                    <MainForm request={route} title={"Cadastro"} navigate={navigateToPage} imputAtributes={imputsForm} />
+                    <MainForm request={route} title={"Cadastro"} navigate={navigateToPage} inputAtributes={inputsForm} />
                 </Col>
             </Row>
         </Container>

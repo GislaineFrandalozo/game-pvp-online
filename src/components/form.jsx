@@ -1,50 +1,48 @@
 // LIB
-import { Button, Form, Row, Stack } from 'react-bootstrap'
+import { Button, Form, Stack } from 'react-bootstrap'
 import { useState } from 'react';
 // COMPONENTS
-import Imput from './imput';
+import Input from './input';
 // SERVICES
 import { auth } from '../services/http/auth';
-import { createObjectAuth } from '../services/applicationFunctions/createObjectAuth';
+import { createObjectAuth } from '../services/utils/createObjectAuth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-export default function FormGame({ route, imputsForm }) {
+export default function FormGame({ route, inputsForm }) {
     const [validated, setValidated] = useState(false);
     const handleSubmit = async (event) => {
         event.preventDefault()
         setValidated(true);
         try {
             let json = {}
-            for (let imput = 0; imput < imputsForm.length; imput++) {
-                let imputTag = event.target[imput]
-                if (imputTag.checkValidity() === false) {
+            for (let input = 0; input < inputsForm.length; input++) {
+                let inputTag = event.target[input]
+                if (inputTag.checkValidity() === false) {
                     event.stopPropagation();
-                    throw "inválido"
+                    throw new Error("Erro imput")
                 } else {
-                    json = createObjectAuth(imputTag, json)
+                    json = createObjectAuth(inputTag, json)
                 }
             }
-            let request = auth(route, json)
-            request.then((resolve) => {
-                console.log(resolve)
-            })
-                .catch((error) => {
-                    console.log(error)
-                    console.log("400 dfgdgsSSCFFDFGV")
-                })
+            const response = await auth(route, json)
+            console.log("LINHA 30")
+            console.log(response)
         } catch (e) {
+            console.log("CAIU NO CATCH")
             console.log(e)
         }
     }
-
     return (
         <Form
             noValidate
             validated={validated}
             onSubmit={handleSubmit}>
             <Stack gap={4} className="align-items-center">
-                <Imput metadatas={imputsForm} />
-                <Button className="w-50" type="submit">Submit form</Button>
+                <Input metadatas={inputsForm} />
+                <Button className="w-50" type="submit">Enviar</Button>
+                <ToastContainer position="bottom-right"/>
             </Stack>
         </Form>
     )

@@ -1,16 +1,27 @@
 // LIB
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 export async function auth(route, json) {
-    return new Promise((resolve, reject) => {
-        axios.post(`http://localhost:3001/${route}`, json)
-            .then(function (response) {
-                console.log("request response 200 ok");
-                resolve(response)
-            })
-            .catch(function (error) {
-                console.log("request response error");
-                reject(error)
-            });
-    })
+    return toast.promise(axios.post(`http://localhost:3001/${route}`, json), {
+        pending: {
+            render(){
+                return "Carregando. Aguarde!"
+            },
+            theme: "dark"
+        },
+        success: {
+            render(){
+                return "Requisição realizada com sucesso!"
+            },
+            icon: "🚀",
+            theme: "colored"
+        },
+        error: {
+            render({data}){
+                console.log(data)
+                return data.response.data.error
+            },
+            theme: "colored"
+        }
+      })
 }

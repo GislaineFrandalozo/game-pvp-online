@@ -1,7 +1,7 @@
 // LIB
 import { Col, Form, Row, Image, Stack } from "react-bootstrap"
 
-export default function Imput(
+export default function Input(
     {
         metadatas = [
             {
@@ -18,7 +18,7 @@ export default function Imput(
                 onChange: null
             }]
     }) {
-    const imputs = metadatas.map((
+    const inputs = metadatas.map((
         { label,
             type,
             nameAtributeRequest,
@@ -58,7 +58,7 @@ export default function Imput(
 
     return (
         <Stack gap={2} >
-            {imputs}
+            {inputs}
         </Stack>
     )
 }
