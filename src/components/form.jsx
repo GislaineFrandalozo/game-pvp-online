@@ -6,8 +6,7 @@ import Input from './input';
 // SERVICES
 import { auth } from '../services/http/auth';
 import { createObjectAuth } from '../services/utils/createObjectAuth';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 export default function FormGame({ route, inputsForm }) {
@@ -21,6 +20,7 @@ export default function FormGame({ route, inputsForm }) {
                 let inputTag = event.target[input]
                 if (inputTag.checkValidity() === false) {
                     event.stopPropagation();
+                    toast("Verefique os campos!")
                     throw new Error("Erro imput")
                 } else {
                     json = createObjectAuth(inputTag, json)

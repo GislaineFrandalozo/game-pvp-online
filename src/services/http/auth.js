@@ -7,21 +7,24 @@ export async function auth(route, json) {
             render(){
                 return "Carregando. Aguarde!"
             },
-            theme: "dark"
+            theme: "dark",
+            delay: 100
         },
         success: {
             render(){
                 return "Requisição realizada com sucesso!"
             },
             icon: "🚀",
-            theme: "colored"
+            theme: "colored",
+            delay: 100
         },
         error: {
             render({data}){
-                console.log(data)
+                console.log("é O DALES")
                 return data.response.data.error
             },
-            theme: "colored"
+            theme: "colored",
+            delay: 700
         }
       })
 }
