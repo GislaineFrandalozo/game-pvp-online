@@ -40,7 +40,7 @@ export default function PageLogin() {
     ]
     const navigateToPage = {
         text: "Ainda não possui cadastro ?",
-        button: "clique aqui",
+        button: "Clique aqui",
         page: "sign-up",
         handleClick: () => { navigate(`/${navigateToPage.page}`); }
     };

@@ -7,14 +7,16 @@ import FormGame from "./form";
 export default function MainForm({ request, title, navigate, inputAtributes }) {
     return (
         <Stack gap={5} className="align-items-center justify-content-center">
-            <Col>
-                <Row className="h2 pt-4">{title}</Row>
-            </Col>
+            <Row>
+                <Col className="h2 pt-5">{title}</Col>
+            </Row>
             <FormGame route={request} inputsForm={inputAtributes} />
-            <Stack gap={1} className="align-items-center">
-                <p>{navigate.text}</p>
+            <Row className="align-items-center row-cols-1 text-center">
+                <Col className="h6 pb-3">{navigate.text}</Col>
+                <Col>
                 <Button onClick={navigate.handleClick}>{navigate.button}</Button>
-            </Stack>
+                </Col>
+            </Row>
         </Stack>
     )
 }
