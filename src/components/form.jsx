@@ -1,6 +1,7 @@
 // LIB
 import { Button, Form, Stack } from 'react-bootstrap'
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import Input from './input';
 // SERVICES
@@ -12,7 +13,7 @@ import { toast, ToastContainer } from 'react-toastify';
 export default function FormGame({ route, inputsForm }) {
     const [validated, setValidated] = useState(false);
     const InputInvalid = "Verefique os campos!"
-
+    let navigate = useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault()
         setValidated(true);
@@ -28,8 +29,12 @@ export default function FormGame({ route, inputsForm }) {
                 }
             }
             const response = await requestForm(route, json)
-            console.log("LINHA 30")
-            console.log(response)
+           if(response.status === 200){   
+               console.log(response.data)
+               navigate(`/home`)
+           }else{
+               navigate(`/`)
+           }
         } catch (e) {
             console.log("CAIU NO CATCH")
             if(e.message === "InputValueInvalid"){

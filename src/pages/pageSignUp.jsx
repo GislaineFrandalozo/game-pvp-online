@@ -95,7 +95,7 @@ export default function PageSignUp() {
 
     const navigateToPage = {
         text: "Já possui cadastro ?",
-        button: "Faça login aqui",
+        button: "Entre aqui",
         handleClick: () => { navigate(`/`); }
     };
 

@@ -5,7 +5,7 @@ import { Button, Stack, Col, Row } from 'react-bootstrap'
 import FormGame from "./form";
 export default function MainForm({ routeRequest, title, navigate, inputAtributes }) {
     return (
-        <Stack gap={5} className="align-items-center justify-content-center">
+        <Stack gap={5} className="align-items-center">
             <Row>
                 <Col className="h2 pt-5">{title}</Col>
             </Row>
