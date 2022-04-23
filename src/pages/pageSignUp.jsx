@@ -2,14 +2,14 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
 // COMPONENTS
-import AsideAuth from "../components/asideAuth";
-import MainForm from "../components/mainAuthForm";
+import AsideForm from "../components/asideForm";
+import MainForm from "../components/mainForm";
 
 export default function PageSignUp() {
+    const titleForm = "Cadastro"
     const route = "sign-up"
     let navigate = useNavigate();
     const defaultFeedback = "Este campo é obrigatório."
-
     const inputsForm = [
         {
             label: "Nome",
@@ -78,21 +78,18 @@ export default function PageSignUp() {
                 var preview = document.querySelector('img');
                 var file = document.querySelector('input[type=file]').files[0];
                 var reader = new FileReader();
-
                 reader.onloadend = function () {
                     preview.src = reader.result;
                     console.log(e.target.value)
         
 
                 }
-
                 if (file) {
                     reader.readAsDataURL(file);
                 } else {
                     preview.src = "";
                 }
             }
-
         }
     ]
 
@@ -106,10 +103,10 @@ export default function PageSignUp() {
         <Container fluid >
             <Row>
                 <Col xs={4} sm={5} className="bg-dark bg-gradient" >
-                    <AsideAuth />
+                    <AsideForm />
                 </Col>
                 <Col>
-                    <MainForm request={route} title={"Cadastro"} navigate={navigateToPage} inputAtributes={inputsForm} />
+                    <MainForm routeRequest={route} title={titleForm} navigate={navigateToPage} inputAtributes={inputsForm} />
                 </Col>
             </Row>
         </Container>

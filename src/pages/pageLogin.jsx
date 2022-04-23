@@ -2,14 +2,14 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
 // COMPONENTS
-import AsideAuth from "../components/asideAuth";
-import MainForm from "../components/mainAuthForm";
+import AsideForm from "../components/asideForm";
+import MainForm from "../components/mainForm";
 
 export default function PageLogin() {
+    const titleForm = "Entrar"
     const route = "sign-in"
     let navigate = useNavigate();
     const defaultFeedback = "Este campo é obrigatório."
-
     const inputsForm = [
         {
             label: "Email",
@@ -48,10 +48,10 @@ export default function PageLogin() {
         <Container fluid >
             <Row>
                 <Col xs={4} sm={5} className="bg-dark bg-gradient">
-                    <AsideAuth />
+                    <AsideForm />
                 </Col>
                 <Col>
-                    <MainForm request={route} title={"Login"} navigate={navigateToPage} inputAtributes={inputsForm} />
+                    <MainForm routeRequest={route} title={titleForm} navigate={navigateToPage} inputAtributes={inputsForm} />
                 </Col>
             </Row>
         </Container>

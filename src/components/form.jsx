@@ -4,13 +4,15 @@ import { useState } from 'react';
 // COMPONENTS
 import Input from './input';
 // SERVICES
-import { auth } from '../services/http/auth';
-import { createObjectAuth } from '../services/utils/createObjectAuth';
+import { requestForm } from '../services/http/requestForm';
+import { createObjectForm } from '../services/utils/createObjectForm';
 import { toast, ToastContainer } from 'react-toastify';
 
 
 export default function FormGame({ route, inputsForm }) {
     const [validated, setValidated] = useState(false);
+    const InputInvalid = "Verefique os campos!"
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         setValidated(true);
@@ -20,18 +22,19 @@ export default function FormGame({ route, inputsForm }) {
                 let inputTag = event.target[input]
                 if (inputTag.checkValidity() === false) {
                     event.stopPropagation();
-                    toast("Verefique os campos!")
-                    throw new Error("Erro imput")
+                    throw new Error("InputValueInvalid")
                 } else {
-                    json = createObjectAuth(inputTag, json)
+                    json = createObjectForm(inputTag, json)
                 }
             }
-            const response = await auth(route, json)
+            const response = await requestForm(route, json)
             console.log("LINHA 30")
             console.log(response)
         } catch (e) {
             console.log("CAIU NO CATCH")
-            console.log(e)
+            if(e.message === "InputValueInvalid"){
+                toast(InputInvalid)
+            }
         }
     }
     return (

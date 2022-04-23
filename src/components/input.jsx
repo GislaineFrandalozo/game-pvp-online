@@ -26,7 +26,7 @@ export default function Input(
             onChange },
         index) => {
         const imagePreview =
-            <Col xs={5} sm={4} >
+            <Col className="bg-dark row-cols-1 justify-content-center" xs={5} sm={4} >
                 <Image
                     thumbnail
                     fluid
@@ -34,11 +34,10 @@ export default function Input(
                     className="imgUser"
                     alt="Prévia da imagem..." />
             </Col>
-
-
         return (
             <Form.Group as={Row} key={index} >
-                <Col >
+                <Row>
+                <Col>
                     <Form.Label >{label}</Form.Label>
                     <Form.Control
                         type={type}
@@ -52,10 +51,10 @@ export default function Input(
                     <Form.Control.Feedback type="invalid"> {validate.feedback} </Form.Control.Feedback>
                 </Col>
                 {type === "file" && imagePreview}
+                </Row>
             </Form.Group>
         )
     })
-
     return (
         <Stack gap={2} >
             {inputs}
