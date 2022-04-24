@@ -13,7 +13,7 @@ export default function MainForm({ routeRequest, title, navigate, inputAtributes
             <Row className="align-items-center row-cols-1 text-center">
                 <Col className="h6 pb-3">{navigate.text}</Col>
                 <Col>
-                <Button onClick={navigate.handleClick}>{navigate.button}</Button>
+                <Button variant="outline-danger" onClick={navigate.handleClick}>{navigate.button}</Button>
                 </Col>
             </Row>
         </Stack>

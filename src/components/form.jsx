@@ -8,6 +8,7 @@ import Input from './input';
 import { requestForm } from '../services/http/requestForm';
 import { createObjectForm } from '../services/utils/createObjectForm';
 import { toast, ToastContainer } from 'react-toastify';
+import { getUser } from '../services/http/getUser';
 
 
 export default function FormGame({ route, inputsForm }) {
@@ -29,9 +30,10 @@ export default function FormGame({ route, inputsForm }) {
                 }
             }
             const response = await requestForm(route, json)
-           if(response.status === 200){   
-               console.log(response.data)
-               navigate(`/home`)
+           if(response.status === 200){
+            getUser(response.data) 
+            setTimeout(() => navigate(`/home`), 3000) 
+               
            }else{
                navigate(`/`)
            }
@@ -49,7 +51,7 @@ export default function FormGame({ route, inputsForm }) {
             onSubmit={handleSubmit}>
             <Stack gap={4} className="align-items-center">
                 <Input metadatas={inputsForm} />
-                <Button className="w-50" type="submit">Enviar</Button>
+                <Button variant="danger" className="w-50" type="submit">Enviar</Button>
                 <ToastContainer position="bottom-right"/>
             </Stack>
         </Form>

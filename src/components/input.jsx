@@ -26,7 +26,7 @@ export default function Input(
             onChange },
         index) => {
         const imagePreview =
-            <Col className="bg-dark row-cols-1 justify-content-center" xs={5} sm={4} >
+            <Col className="row-cols-1 justify-content-center" xs={5} sm={4} >
                 <Image
                     thumbnail
                     fluid
