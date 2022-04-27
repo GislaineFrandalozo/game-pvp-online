@@ -81,7 +81,7 @@ export default function PageSignUp() {
                 reader.onloadend = function () {
                     preview.src = reader.result;
                     console.log(e.target.value)
-        
+
 
                 }
                 if (file) {
@@ -106,7 +106,11 @@ export default function PageSignUp() {
                     <AsideForm />
                 </Col>
                 <Col>
-                    <MainForm routeRequest={route} title={titleForm} navigate={navigateToPage} inputAtributes={inputsForm} />
+                    <MainForm
+                        routeRequest={route}
+                        title={titleForm}
+                        navigate={navigateToPage}
+                        inputAtributes={inputsForm} />
                 </Col>
             </Row>
         </Container>

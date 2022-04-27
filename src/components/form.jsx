@@ -8,7 +8,7 @@ import Input from './input';
 import { requestForm } from '../services/http/requestForm';
 import { createObjectForm } from '../services/utils/createObjectForm';
 import { toast, ToastContainer } from 'react-toastify';
-import { getUser } from '../services/http/getUser';
+import { setUser } from '../services/http/setUser';
 
 
 export default function FormGame({ route, inputsForm }) {
@@ -31,7 +31,7 @@ export default function FormGame({ route, inputsForm }) {
             }
             const response = await requestForm(route, json)
            if(response.status === 200){
-            getUser(response.data) 
+            setUser(response.data) 
             setTimeout(() => navigate(`/home`), 3000) 
                
            }else{

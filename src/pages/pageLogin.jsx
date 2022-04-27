@@ -51,7 +51,11 @@ export default function PageLogin() {
                     <AsideForm />
                 </Col>
                 <Col>
-                    <MainForm routeRequest={route} title={titleForm} navigate={navigateToPage} inputAtributes={inputsForm} />
+                    <MainForm
+                        routeRequest={route}
+                        title={titleForm}
+                        navigate={navigateToPage}
+                        inputAtributes={inputsForm} />
                 </Col>
             </Row>
         </Container>
