@@ -31,14 +31,13 @@ export default function FormGame({ route, inputsForm }) {
             }
             const response = await requestForm(route, json)
            if(response.status === 200){
-            setUser(response.data) 
-            setTimeout(() => navigate(`/home`), 3000) 
-               
+       await setUser(response.data) 
+         navigate(`/home`)
            }else{
                navigate(`/`)
            }
         } catch (e) {
-            console.log("CAIU NO CATCH")
+            console.log(e)
             if(e.message === "InputValueInvalid"){
                 toast(InputInvalid)
             }
