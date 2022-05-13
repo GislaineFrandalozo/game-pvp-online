@@ -80,9 +80,6 @@ export default function PageSignUp() {
                 var reader = new FileReader();
                 reader.onloadend = function () {
                     preview.src = reader.result;
-                    console.log(e.target.value)
-
-
                 }
                 if (file) {
                     reader.readAsDataURL(file);

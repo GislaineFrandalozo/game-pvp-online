@@ -30,15 +30,14 @@ export default function FormGame({ route, inputsForm }) {
                 }
             }
             const response = await requestForm(route, json)
-           if(response.status === 200){
-       await setUser(response.data) 
-         navigate(`/home`)
-           }else{
-               navigate(`/`)
-           }
+            if (response.status === 200) {
+                await setUser(response.data)
+                navigate(`/home`)
+            } else {
+                navigate(`/`)
+            }
         } catch (e) {
-            console.log(e)
-            if(e.message === "InputValueInvalid"){
+            if (e.message === "InputValueInvalid") {
                 toast(InputInvalid)
             }
         }
@@ -51,7 +50,7 @@ export default function FormGame({ route, inputsForm }) {
             <Stack gap={4} className="align-items-center">
                 <Input metadatas={inputsForm} />
                 <Button variant="danger" className="w-50" type="submit">Enviar</Button>
-                <ToastContainer position="bottom-right"/>
+                <ToastContainer position="bottom-right" />
             </Stack>
         </Form>
     )
