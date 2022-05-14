@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import Input from './input';
 // SERVICES
-import { requestForm } from '../services/http/requestForm';
 import { createObjectForm } from '../services/utils/createObjectForm';
 import { toast, ToastContainer } from 'react-toastify';
-import { setUser } from '../services/http/setUser';
+import { request } from '../services/http/request';
+import { userStorage } from '../services/utils/userStorage';
 
 
 export default function FormGame({ route, inputsForm }) {
@@ -17,6 +17,7 @@ export default function FormGame({ route, inputsForm }) {
     let navigate = useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault()
+        const requestAuth = new request()
         setValidated(true);
         try {
             let json = {}
@@ -29,16 +30,29 @@ export default function FormGame({ route, inputsForm }) {
                     json = createObjectForm(inputTag, json)
                 }
             }
-            const response = await requestForm(route, json)
+            const response = await requestAuth.post(route, json)
             if (response.status === 200) {
-                await setUser(response.data)
-                navigate(`/home`)
+                const headers = {
+                    Authorization: `Bearer ${response.data.token}`
+                }
+                await requestAuth.get("/me", headers).then((response) => {
+                    const setUserStorage = new userStorage()
+                    setUserStorage.set(response.data.user)
+                   // navigate(`/home`)
+                })
             } else {
                 navigate(`/`)
             }
         } catch (e) {
             if (e.message === "InputValueInvalid") {
                 toast(InputInvalid)
+            }
+            if (e.status === 401) {
+                localStorage.clear()
+                toast.error("Algo deu errado no nosso servidor, estamos tentando resolver!", {
+                    theme: "dark",
+                    icon: "🙁"
+                })
             }
         }
     }

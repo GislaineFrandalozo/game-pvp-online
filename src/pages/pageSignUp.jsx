@@ -7,7 +7,7 @@ import MainForm from "../components/mainForm";
 
 export default function PageSignUp() {
     const titleForm = "Cadastro"
-    const route = "sign-up"
+    const route = "/sign-up"
     let navigate = useNavigate();
     const defaultFeedback = "Este campo é obrigatório."
     const inputsForm = [
