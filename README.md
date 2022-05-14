@@ -46,11 +46,12 @@ Pronto! O projeto irá abrir no endereço <a href="http://localhost:3000/">http:
  
    * `src/components/form.jsx`
     <blockquote> Este componente foi desenvolvido de forma que possa ser utilizado tanto na página de entrada na aplicação quanto na de cadastro</blockquote>
-    <p> 1. As variáveis chave para sua montagem e comportamentos está declarada em <code>src/pages/pageLogin.jsx</code> e <code>src/pages/pageSignUp.jsx</code> (estes são os componentes que montam estas páginas). Os atributos dos inputs são declarados nestes arquivos na variável <code>inputsForm</code>, mas são montados em <code>src/components/input.jsx</code>. Ali é feito um <code>map</code> no vetor declarado em <code>inputsForm</code>, ou usa um valor padrão declarado neste arquivo em <code>metadatas</code>.
-     <br><em>a. Caso tenha declarado um imput com <code>type: "file"</code> o código irá criar uma miniatura para receber um "preview" da imagem, mas a função de <code>onChange</code> passada nos inputs que tem a funcionalidade de atualizar a imagem dentro da miniatura.</em></p> 
-     <p> 2. Todos os campos são obrigatórios, existe validação dos campos no front end, mas também esxiste no back end.
- <br><em>   a. Validação dos campos é feita em <code>inputTag.checkValidity()</code> na linha 26 do arquivo <code>form.jsx</code> </em> </p>
-     <p> 3. Depois da requisição post existe uma condicional com relação a qual rota no servidor que foi feita esta requisição, pois precisasse do token do header disponível somente em <code>/sign-in</code>.
-       <br><em> a. Caso a condicional de verdadeira é realizado uma requisição get com o valor do token no header e salvo os dados da resposta no local storage.</em></p>
+     1. As variáveis chave para sua montagem e comportamentos está declarada em <code>src/pages/pageLogin.jsx</code> e <code>src/pages/pageSignUp.jsx</code> (estes são os componentes que montam estas páginas). Os atributos dos inputs são declarados nestes arquivos na variável <code>inputsForm</code>, mas são montados em <code>src/components/input.jsx</code>. Ali é feito um <code>map</code> no vetor declarado em <code>inputsForm</code>, ou usa um valor padrão declarado neste arquivo em <code>metadatas</code>.
+  <br><em> Caso tenha declarado um imput com <code>type: "file"</code> o código irá criar uma miniatura para receber um "preview" da imagem, mas a função de <code>onChange</code> passada nos inputs que tem a funcionalidade de atualizar a imagem dentro da miniatura.</em>
+     2. Todos os campos são obrigatórios, existe validação dos campos no front end, mas também esxiste no back end.
+   <br><em> Validação dos campos é feita em <code>inputTag.checkValidity()</code> na linha 26 do arquivo <code>form.jsx</code> </em>
+     3. Depois da requisição post existe uma condicional com relação a qual rota no servidor que foi feita esta requisição, pois precisasse do token do header disponível somente em <code>/sign-in</code>.
+   <br><em> Caso a condicional de verdadeira é realizado uma requisição get com o valor do token no header e salvo os dados da resposta no local storage.               </em>
+ 
    * `src/services/http/request.js`
     <blockquote> Este arquivo contém uma classe com configuração base para as requisições http</blockquote>
