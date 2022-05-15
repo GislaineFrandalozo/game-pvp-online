@@ -4,12 +4,22 @@ import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import AsideForm from "../components/asideForm";
 import MainForm from "../components/mainForm";
+import { createMetadataForm } from '../utils/formMetadata';
 
 export default function PageSignUp() {
     const titleForm = "Cadastro"
     const route = "/sign-up"
     let navigate = useNavigate();
-    const defaultFeedback = "Este campo é obrigatório."
+    const navigateToPage = {
+        text: "Já possui cadastro ?",
+        button: "Entre aqui",
+        handleClick: () => { navigate(`/`); }
+    };
+    const metadataForm = new createMetadataForm()
+    metadataForm.request.route = route 
+/*
+success: "Cadastro realizado com sucesso! Aguarde."
+   const defaultFeedback = "Este campo é obrigatório."
     const inputsForm = [
         {
             label: "Nome",
@@ -88,14 +98,7 @@ export default function PageSignUp() {
                 }
             }
         }
-    ]
-
-    const navigateToPage = {
-        text: "Já possui cadastro ?",
-        button: "Entre aqui",
-        handleClick: () => { navigate(`/`); }
-    };
-
+    ]  */
     return (
         <Container fluid >
             <Row>
@@ -104,10 +107,10 @@ export default function PageSignUp() {
                 </Col>
                 <Col>
                     <MainForm
-                        routeRequest={route}
+                        configRequest={metadataForm.request}
                         title={titleForm}
                         navigate={navigateToPage}
-                        inputAtributes={inputsForm} />
+                        inputAtributes={metadataForm.createMetadataInput(["name", "email","birthdate", "password", "photo"])} />
                 </Col>
             </Row>
         </Container>

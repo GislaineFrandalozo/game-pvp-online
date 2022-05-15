@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import Input from './input';
 // SERVICES
-import { createObjectForm } from '../services/utils/createObjectForm';
+import { createObjectForm } from '../utils/createObjectForm';
 import { toast, ToastContainer } from 'react-toastify';
 import { request } from '../services/http/request';
-import { userStorage } from '../services/utils/userStorage';
+import { userStorage } from '../utils/userStorage';
 
 
-export default function FormGame({ route, inputsForm }) {
+export default function FormGame({ configRequest, inputsForm }) {
     const [validated, setValidated] = useState(false);
     const InputInvalid = "Verefique os campos!"
     let navigate = useNavigate()
@@ -30,8 +30,8 @@ export default function FormGame({ route, inputsForm }) {
                     json = createObjectForm(inputTag, json)
                 }
             }
-            const response = await requestAuth.post(route, json)
-            if (response.status === 200) {
+            const response = await requestAuth.post(configRequest, json)
+            if (configRequest.route === "/sign-in") {
                 const headers = {
                     Authorization: `Bearer ${response.data.token}`
                 }

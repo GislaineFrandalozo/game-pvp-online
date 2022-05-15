@@ -4,12 +4,28 @@ import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import AsideForm from "../components/asideForm";
 import MainForm from "../components/mainForm";
+import { createMetadataForm } from '../utils/formMetadata';
 
 export default function PageLogin() {
     const titleForm = "Entrar"
     const route = "/sign-in"
     let navigate = useNavigate();
-    const defaultFeedback = "Este campo é obrigatório."
+    const navigateToPage = {
+        text: "Ainda não possui cadastro ?",
+        button: "Cadastre-se aqui",
+        page: "sign-up",
+        handleClick: () => { navigate(`/${navigateToPage.page}`); }
+    };
+    const toastPromiseConfiguration = {
+        pending: "Carregando, aguarde!",
+        success: "Suas credências estão corretas! Aguarde.",
+    }
+    const callbackAfterPost = (response) => {console.log(response, "VEIO DO PAGE LOGIN")}
+    const metadataForm = new createMetadataForm({route, toastPromiseConfiguration, callbackAfterPost})
+
+    /*  
+  {route, toastPromiseConfiguration, callbackAfterPost}
+  const defaultFeedback = "Este campo é obrigatório."
     const inputsForm = [
         {
             label: "Email",
@@ -37,13 +53,7 @@ export default function PageLogin() {
             },
             onChange: null
         },
-    ]
-    const navigateToPage = {
-        text: "Ainda não possui cadastro ?",
-        button: "Cadastre-se aqui",
-        page: "sign-up",
-        handleClick: () => { navigate(`/${navigateToPage.page}`); }
-    };
+    ] */
     return (
         <Container fluid >
             <Row>
@@ -52,10 +62,10 @@ export default function PageLogin() {
                 </Col>
                 <Col>
                     <MainForm
-                        routeRequest={route}
+                        configRequest={metadataForm.request}
                         title={titleForm}
                         navigate={navigateToPage}
-                        inputAtributes={inputsForm} />
+                        inputAtributes={metadataForm.createMetadataInput(["email", "password"])} />
                 </Col>
             </Row>
         </Container>
