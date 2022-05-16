@@ -1,14 +1,12 @@
-//LIB
 import { Col, Container, Row } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
-// COMPONENTS
 import AsideForm from "../components/asideForm";
 import MainForm from "../components/mainForm";
+import { request } from '../services/http/request';
 import { createMetadataForm } from '../utils/formMetadata';
+import { userStorage } from '../utils/userStorage';
 
 export default function PageLogin() {
-    const titleForm = "Entrar"
-    const route = "/sign-in"
     let navigate = useNavigate();
     const navigateToPage = {
         text: "Ainda não possui cadastro ?",
@@ -16,44 +14,31 @@ export default function PageLogin() {
         page: "sign-up",
         handleClick: () => { navigate(`/${navigateToPage.page}`); }
     };
+    const titleForm = "Entrar"
+    const route = "/sign-in"
+    const createInputs = ["email", "password"];
     const toastPromiseConfiguration = {
         pending: "Carregando, aguarde!",
         success: "Suas credências estão corretas! Aguarde.",
     }
-    const callbackAfterPost = (response) => {console.log(response, "VEIO DO PAGE LOGIN")}
-    const metadataForm = new createMetadataForm({route, toastPromiseConfiguration, callbackAfterPost})
-
-    /*  
-  {route, toastPromiseConfiguration, callbackAfterPost}
-  const defaultFeedback = "Este campo é obrigatório."
-    const inputsForm = [
-        {
-            label: "Email",
-            type: "text",
-            nameAtributeRequest: "email",
-            validate: {
-                required: true,
-                min: "10",
-                max: "50",
-                pattern: ".+@.+\.com",
-                feedback: `${defaultFeedback} Ex: nome@exemplo.com`
-            },
-            onChange: null
-        },
-        {
-            label: "Senha",
-            type: "password",
-            nameAtributeRequest: "password",
-            validate: {
-                required: true,
-                min: "5",
-                max: "50",
-                pattern: ".+.",
-                feedback: `${defaultFeedback} Mínimo 5 caracteres`
-            },
-            onChange: null
-        },
-    ] */
+    const callbackAfterPost = async (response) => {
+        const requestAuth = new request()
+        const headers = {
+            Authorization: `Bearer ${response.data.token}`
+        }
+        await requestAuth.get("/me", headers).then((response) => {
+            const setUserStorage = new userStorage()
+            setUserStorage.set(response.data.user)
+             navigate(`/home`)
+        })
+    }
+    const metadataForm = new createMetadataForm({
+        route,
+        toastPromiseConfiguration,
+        callbackAfterPost
+    },
+    createInputs
+    )
     return (
         <Container fluid >
             <Row>
@@ -62,10 +47,10 @@ export default function PageLogin() {
                 </Col>
                 <Col>
                     <MainForm
-                        configRequest={metadataForm.request}
+                        configForm={metadataForm}
                         title={titleForm}
                         navigate={navigateToPage}
-                        inputAtributes={metadataForm.createMetadataInput(["email", "password"])} />
+                    />
                 </Col>
             </Row>
         </Container>

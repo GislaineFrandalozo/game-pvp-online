@@ -1,104 +1,31 @@
-//LIB
 import { Col, Container, Row } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
-// COMPONENTS
 import AsideForm from "../components/asideForm";
 import MainForm from "../components/mainForm";
 import { createMetadataForm } from '../utils/formMetadata';
 
 export default function PageSignUp() {
-    const titleForm = "Cadastro"
-    const route = "/sign-up"
     let navigate = useNavigate();
     const navigateToPage = {
         text: "Já possui cadastro ?",
         button: "Entre aqui",
         handleClick: () => { navigate(`/`); }
     };
-    const metadataForm = new createMetadataForm()
-    metadataForm.request.route = route 
-/*
-success: "Cadastro realizado com sucesso! Aguarde."
-   const defaultFeedback = "Este campo é obrigatório."
-    const inputsForm = [
-        {
-            label: "Nome",
-            type: "text",
-            nameAtributeRequest: "name",
-            validate: {
-                required: true,
-                min: "3",
-                max: "20",
-                pattern: ".+.",
-                feedback: `${defaultFeedback} Mínimo 3 caracteres.`
-            },
-            onChange: null
-        },
-        {
-            label: "Email",
-            type: "text",
-            nameAtributeRequest: "email",
-            validate: {
-                required: true,
-                min: "10",
-                max: "50",
-                pattern: ".+@.+\.com",
-                feedback: `${defaultFeedback} Ex: "nome@exemplo.com".`
-            },
-            onChange: null
-        },
-        {
-            label: "Data de nascimento",
-            type: "date",
-            nameAtributeRequest: "birthdate",
-            validate: {
-                required: true,
-                min: "0",
-                max: "",
-                pattern: ".+.",
-                feedback: defaultFeedback
-            },
-            onChange: null
-        },
-        {
-            label: "Senha",
-            type: "password",
-            nameAtributeRequest: "password",
-            validate: {
-                required: true,
-                min: "5",
-                max: "50",
-                pattern: ".+.",
-                feedback: `${defaultFeedback} Mínimo 5 caracteres.`
-            },
-            onChange: null
-        },
-        {
-            label: "Imagem de perfil",
-            type: "file",
-            nameAtributeRequest: "photo",
-            validate: {
-                required: true,
-                min: "0",
-                max: "",
-                pattern: ".+.",
-                feedback: defaultFeedback
-            },
-            onChange: (e) => {
-                var preview = document.querySelector('img');
-                var file = document.querySelector('input[type=file]').files[0];
-                var reader = new FileReader();
-                reader.onloadend = function () {
-                    preview.src = reader.result;
-                }
-                if (file) {
-                    reader.readAsDataURL(file);
-                } else {
-                    preview.src = "";
-                }
-            }
-        }
-    ]  */
+    const titleForm = "Cadastro"
+    const route = "/sign-up"
+    const createInputs = ["name", "email", "birthdate", "password", "photo"]
+    const toastPromiseConfiguration = {
+        pending: "Carregando, aguarde!",
+        success: "Cadastro realizado com sucesso!",
+    }
+    const callbackAfterPost = (response) => { navigate(`/`) }
+    const metadataForm = new createMetadataForm({
+        route,
+        toastPromiseConfiguration,
+        callbackAfterPost
+    },
+        createInputs
+    )
     return (
         <Container fluid >
             <Row>
@@ -107,10 +34,10 @@ success: "Cadastro realizado com sucesso! Aguarde."
                 </Col>
                 <Col>
                     <MainForm
-                        configRequest={metadataForm.request}
+                        configForm={metadataForm}
                         title={titleForm}
                         navigate={navigateToPage}
-                        inputAtributes={metadataForm.createMetadataInput(["name", "email","birthdate", "password", "photo"])} />
+                    />
                 </Col>
             </Row>
         </Container>

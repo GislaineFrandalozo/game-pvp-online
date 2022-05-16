@@ -1,10 +1,11 @@
 export class createMetadataForm {
-    constructor(request) {
+    constructor(request, inputs) {
         this.request = request || {
             route: "/",
             toastPromiseConfiguration: { pending: "Carregando, aguarde!", success: "Requisição realizada com sucesso" },
             callbackAfterPost: (response) => { console.log(response) },
         }
+        this.inputs = this.createMetadataInput(inputs)
     }
 
     createMetadataInput(idInputs) {

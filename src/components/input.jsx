@@ -35,8 +35,7 @@ export default function Input(
                     alt="Prévia da imagem..." />
             </Col>
         return (
-            <Form.Group as={Row} key={index} >
-                <Row>
+                <Row key={index}>
                 <Col>
                     <Form.Label >{label}</Form.Label>
                     <Form.Control
@@ -52,7 +51,6 @@ export default function Input(
                 </Col>
                 {type === "file" && imagePreview}
                 </Row>
-            </Form.Group>
         )
     })
     return (
