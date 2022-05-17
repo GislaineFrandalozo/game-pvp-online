@@ -1,41 +1,36 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
-import AsideForm from "../components/asideForm";
-import MainForm from "../components/mainForm";
-import { createMetadataForm } from '../utils/formMetadata';
-
+import Aside from "../components/aside";
+import { Main } from "../templates/mainAuth";
 export default function PageSignUp() {
-    let navigate = useNavigate();
+    let navigate = useNavigate()
+    const titleMain = "Cadastro"
     const navigateToPage = {
         text: "Já possui cadastro ?",
         button: "Entre aqui",
-        handleClick: () => { navigate(`/`); }
+        routeNavigate: `/`,
     };
-    const titleForm = "Cadastro"
-    const route = "/sign-up"
-    const createInputs = ["name", "email", "birthdate", "password", "photo"]
-    const toastPromiseConfiguration = {
-        pending: "Carregando, aguarde!",
-        success: "Cadastro realizado com sucesso!",
+    const metadataForm = {
+        createInputs: ["name", "email", "birthdate", "password", "photo"],
+        request: {
+            route: "/sign-up",
+            toastPromiseConfiguration: {
+                pending: "Carregando, aguarde!",
+                success: "Cadastro realizado com sucesso!",
+            },
+            callbackAfterPost: (response) => { navigate(`/`) }
+        },
     }
-    const callbackAfterPost = (response) => { navigate(`/`) }
-    const metadataForm = new createMetadataForm({
-        route,
-        toastPromiseConfiguration,
-        callbackAfterPost
-    },
-        createInputs
-    )
     return (
         <Container fluid >
             <Row>
                 <Col xs={4} sm={5} className="bg-dark bg-gradient" >
-                    <AsideForm />
+                    <Aside />
                 </Col>
                 <Col>
-                    <MainForm
+                    <Main
+                        title={titleMain}
                         configForm={metadataForm}
-                        title={titleForm}
                         navigate={navigateToPage}
                     />
                 </Col>

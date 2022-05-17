@@ -1,7 +1,5 @@
-// LIB
 import React from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-// COMPONENTS
 import ComponentTest from "./pages/componentTest";
 import PageLogin from "./pages/pageLogin";
 import PageSignUp from "./pages/pageSignUp";

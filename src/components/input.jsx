@@ -1,24 +1,9 @@
-// LIB
 import { Col, Form, Row, Image, Stack } from "react-bootstrap"
+import { createMetadataInput } from "../utils/createMetadataInputs"
 
-export default function Input(
-    {
-        metadatas = [
-            {
-                label: "title",
-                type: "text",
-                nameAtributeRequest: "name",
-                validate: {
-                    required: false,
-                    min: "0",
-                    max: "",
-                    pattern: ".+.",
-                    feedback: "Este campo não é obrigatório"
-                },
-                onChange: null
-            }]
-    }) {
-    const inputs = metadatas.map((
+export function FormInputStack({ idInputs }) {
+    const metadataInputs = createMetadataInput(idInputs)
+    const inputs = metadataInputs.map((
         { label,
             type,
             nameAtributeRequest,
@@ -35,7 +20,7 @@ export default function Input(
                     alt="Prévia da imagem..." />
             </Col>
         return (
-                <Row key={index}>
+            <Row key={index}>
                 <Col>
                     <Form.Label >{label}</Form.Label>
                     <Form.Control
@@ -49,8 +34,8 @@ export default function Input(
                     />
                     <Form.Control.Feedback type="invalid"> {validate.feedback} </Form.Control.Feedback>
                 </Col>
-                {type === "file" && imagePreview}
-                </Row>
+                {label === "Imagem de perfil" && imagePreview}
+            </Row>
         )
     })
     return (
