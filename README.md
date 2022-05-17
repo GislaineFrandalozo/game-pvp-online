@@ -36,7 +36,7 @@ Pronto! O projeto irá abrir no endereço <a href="http://localhost:3000/">http:
   1. Acesse <a href="http://localhost:3000/sign-up">http://localhost:3000/sign-up</a>. Realize um cadastro na aplicação (todos os campos são obrigatórios). 
   2. Caso tudo esteja correto você será redirecionado para o login. Caso algum campo esteja incorreto você receberá notificações a respeito do que pode estar errado.
    * A tela de login se parece com essa:
-    <p><img src="https://user-images.githubusercontent.com/86322789/168440574-fa962d1e-83ad-4c93-8e74-ad6c457e4c76.png" height="200"></p>   
+    <p><img src="https://user-images.githubusercontent.com/86322789/168692751-adb287f2-3d82-465a-8dad-89688ce4d944.png" height="200"></p>   
    * As notificações que devem aparecer no canto inferior direito da sua tela (caso esteja em um aparelho desktop) são como por exemplo essa:
     <p><img src="https://user-images.githubusercontent.com/86322789/168440631-e18a9144-46a5-44d7-8438-367446153d92.png" height="100"></p>
   3. Depois de criado o cadastro realize login para se autenticar no servidor.
@@ -45,13 +45,7 @@ Pronto! O projeto irá abrir no endereço <a href="http://localhost:3000/">http:
  #### Como desenvolvedor:
  
    * `src/components/form.jsx`
-    <blockquote> Este componente foi desenvolvido de forma que possa ser utilizado tanto na página de entrada na aplicação quanto na de cadastro</blockquote>
-     1. As variáveis chave para sua montagem e comportamentos está declarada em <code>src/pages/pageLogin.jsx</code> e <code>src/pages/pageSignUp.jsx</code> (estes são os componentes que montam estas páginas). Os atributos dos inputs são declarados nestes arquivos na variável <code>inputsForm</code>, mas são montados em <code>src/components/input.jsx</code>. Ali é feito um <code>map</code> no vetor declarado em <code>inputsForm</code>, ou usa um valor padrão declarado neste arquivo em <code>metadatas</code>.
-  <br><em> Caso tenha declarado um imput com <code>type: "file"</code> o código irá criar uma miniatura para receber um "preview" da imagem, mas a função de <code>onChange</code> passada nos inputs que tem a funcionalidade de atualizar a imagem dentro da miniatura.</em>
-     2. Todos os campos são obrigatórios, existe validação dos campos no front end, mas também esxiste no back end.
-   <br><em> Validação dos campos é feita em <code>inputTag.checkValidity()</code> na linha 26 do arquivo <code>form.jsx</code> </em>
-     3. Depois da requisição post existe uma condicional com relação a qual rota no servidor que foi feita esta requisição, pois precisasse do token do header disponível somente em <code>/sign-in</code>.
-   <br><em> Caso a condicional de verdadeira é realizado uma requisição get com o valor do token no header e salvo os dados da resposta no local storage.               </em>
- 
-   * `src/services/http/request.js`
-    <blockquote> Este arquivo contém uma classe com configuração base para as requisições http</blockquote>
+    <blockquote> Este componente foi desenvolvido de forma que possa ser utilizado tanto na página de entrada na aplicação quanto na de cadastro. </blockquote>
+     -  Para reutilizá-lo você deve instanciar um objeto com a classe "createMetadataForm" passando um objeto e um vetor como parâmetros. 
+       1.  O objeto terá de conter 3 atributos para a requisição (a rota, as frases de feedback para o usuário enquanto a"promise" é resolvida e uma função que irá rodar após o termino da requisição post.).
+       2.  O vetor deverá conter palavras chaves para montar os atributos dos "inputs" desse formulário.
