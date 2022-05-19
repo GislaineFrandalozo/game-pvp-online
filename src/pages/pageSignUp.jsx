@@ -11,7 +11,7 @@ export default function PageSignUp() {
         routeNavigate: `/`,
     };
     const metadataForm = {
-        createInputs: ["name", "email", "birthdate", "password", "photo"],
+        createInputs: ["name", "email", "birthdate", "password", "profilePicture"],
         request: {
             route: "/sign-up",
             toastPromiseConfiguration: {

@@ -1,83 +1,89 @@
+import { toast } from "react-toastify";
+
 export function createMetadataInput(idInputs) {
     const defaultFeedback = "Este campo é obrigatório."
-    let configInput = idInputs.map((idInput) => {
+    const configInput = idInputs.map((idInput) => {
         const configInput = {
             name: {
                 label: "Nome",
-                type: "text",
-                nameAtributeRequest: "name",
-                validate: {
+                attributes: {
+                    type: "text",
+                    name: "name",
                     required: true,
-                    min: "3",
-                    max: "20",
-                    pattern: ".+.",
-                    feedback: `${defaultFeedback} Mínimo 3 caracteres.`
+                    minLength: "3",
+                    maxLength: "20",
                 },
-                onChange: null
+                feedback: `${defaultFeedback} Mínimo 3 caracteres.`
             },
             email: {
                 label: "Email",
-                type: "text",
-                nameAtributeRequest: "email",
-                validate: {
+                feedback: `${defaultFeedback} Ex: "nome@exemplo.com".`,
+                attributes: {
+                    type: "text",
+                    name: "email",
                     required: true,
-                    min: "10",
-                    max: "50",
+                    minLength: "10",
+                    maxLength: "50",
                     pattern: ".+@.+\.com",
-                    feedback: `${defaultFeedback} Ex: "nome@exemplo.com".`
                 },
-                onChange: null
             },
             birthdate: {
                 label: "Data de nascimento",
-                type: "date",
-                nameAtributeRequest: "birthdate",
-                validate: {
+                feedback: defaultFeedback,
+                attributes: {
+                    type: "date",
+                    name: "birthdate",
                     required: true,
-                    min: "0",
-                    max: "",
-                    pattern: ".+.",
-                    feedback: defaultFeedback
                 },
-                onChange: null
             },
             password: {
                 label: "Senha",
-                type: "password",
-                nameAtributeRequest: "password",
-                validate: {
+                feedback: `${defaultFeedback} Mínimo 5 caracteres.`,
+                attributes: {
+                    type: "password",
+                    name: "password",
                     required: true,
-                    min: "5",
-                    max: "50",
-                    pattern: ".+.",
-                    feedback: `${defaultFeedback} Mínimo 5 caracteres.`
+                    minLength: "5",
+                    maxLength: "50",
                 },
-                onChange: null
             },
-            photo: {
+            profilePicture: {
                 label: "Imagem de perfil",
-                type: "file",
-                nameAtributeRequest: "photo",
-                validate: {
+                feedback: `${defaultFeedback} ( .png .jpg .jpeg )` ,
+                attributes: {
+                    type: "file",
+                    name: "photo",
                     required: true,
-                    min: "0",
-                    max: "",
-                    pattern: ".+.",
-                    feedback: defaultFeedback
+                    minLength: "1",
+                    accept: ".jpg, .jpeg, .png",
+                    onChange: (e) => {                       
+                        var preview = document.querySelector('img');
+                        const input = document.querySelector('input[name="photo"]')
+                        var file = input.files[0];
+                        var fileExtension = "";
+                        if (input.value.lastIndexOf(".") > 0) {
+                            fileExtension = input.value.substring(input.value.lastIndexOf(".") + 1, input.value.length);
+                            var extension = fileExtension.toLowerCase()
+                        }
+                        if ((extension !== "png") && (extension !== "jpg") && (extension !== "jpeg")) {
+                           preview.src = "";
+                           file = null;
+                           input.value = null;
+                           toast("Formato do arquivo da imagem inválido!")
+                        }
+                        if (extension === "png" || "jpg" || "jpeg") {
+                            var reader = new FileReader();
+                            reader.onloadend = function () {
+                                preview.src = reader.result;
+                            }
+                            if (file) {
+                                reader.readAsDataURL(file);
+                            } else {
+                                preview.src = "";
+                            } 
+                         }
+                    }
                 },
-                onChange: (e) => {
-                    var preview = document.querySelector('img');
-                    var file = document.querySelector('input[type=file]').files[0];
-                    var reader = new FileReader();
-                    reader.onloadend = function () {
-                        preview.src = reader.result;
-                    }
-                    if (file) {
-                        reader.readAsDataURL(file);
-                    } else {
-                        preview.src = "";
-                    }
-                }
             },
         }
         return configInput[idInput];

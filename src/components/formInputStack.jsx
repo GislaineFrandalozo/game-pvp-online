@@ -2,13 +2,15 @@ import { Col, Form, Row, Image, Stack } from "react-bootstrap"
 import { createMetadataInput } from "../utils/createMetadataInputs"
 
 export function FormInputStack({ idInputs }) {
+    const teste = document.getElementsByClassName("form-control")
+    console.log(teste)
+  
     const metadataInputs = createMetadataInput(idInputs)
     const inputs = metadataInputs.map((
         { label,
-            type,
-            nameAtributeRequest,
-            validate,
-            onChange },
+            attributes,
+            feedback
+        },
         index) => {
         const imagePreview =
             <Col className="row-cols-1 justify-content-center" xs={5} sm={4} >
@@ -24,17 +26,11 @@ export function FormInputStack({ idInputs }) {
                 <Col>
                     <Form.Label >{label}</Form.Label>
                     <Form.Control
-                        type={type}
-                        name={nameAtributeRequest}
-                        onChange={onChange}
-                        required={validate.required}
-                        pattern={validate.pattern}
-                        minLength={validate.min}
-                        maxLength={validate.max}
+                       {... attributes}
                     />
-                    <Form.Control.Feedback type="invalid"> {validate.feedback} </Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid"> {feedback} </Form.Control.Feedback>
                 </Col>
-                {label === "Imagem de perfil" && imagePreview}
+                {attributes.name === "photo" && imagePreview}
             </Row>
         )
     })
