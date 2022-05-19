@@ -41,11 +41,3 @@ Pronto! O projeto irá abrir no endereço <a href="http://localhost:3000/">http:
     <p><img src="https://user-images.githubusercontent.com/86322789/168440631-e18a9144-46a5-44d7-8438-367446153d92.png" height="100"></p>
   3. Depois de criado o cadastro realize login para se autenticar no servidor.
   4. Caso as credenciais estejam corretas você será redirecionado para página inicial do jogo, porém, está ainda está em processo de desenvolvimento, seus dados são estáticos e não há nenhuma funcionalidade desenvolvida.
-
- #### Como desenvolvedor:
- 
-   * `src/components/form.jsx`
-    <blockquote> Este componente foi desenvolvido de forma que possa ser utilizado tanto na página de entrada na aplicação quanto na de cadastro. </blockquote>
-     -  Para reutilizá-lo você deve instanciar um objeto com a classe "createMetadataForm" passando um objeto e um vetor como parâmetros. 
-       1.  O objeto terá de conter 3 atributos para a requisição (a rota, as frases de feedback para o usuário enquanto a"promise" é resolvida e uma função que irá rodar após o termino da requisição post.).
-       2.  O vetor deverá conter palavras chaves para montar os atributos dos "inputs" desse formulário.
