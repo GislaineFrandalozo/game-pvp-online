@@ -1,9 +1,10 @@
-// LIB
-import React from 'react';
-import RoutesForGame from './routes';
+    // My component
+import { RoutesForGame } from './routes';
 
-export default function App() {
-    return (
-        <RoutesForGame />
-    );
+function App() {
+  return (
+    <RoutesForGame />
+  );
 }
+
+export { App }

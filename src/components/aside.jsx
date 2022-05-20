@@ -1,4 +1,8 @@
+    // Style
 import "../style/asideForm.css"
-export default function Aside() {
-    return <aside />
+
+function Aside() {
+  return <aside />
 }
+
+export { Aside }

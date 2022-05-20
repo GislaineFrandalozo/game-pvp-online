@@ -1,10 +1,14 @@
-.iconMenu{
- border: 3px solid; /* As 4 bordas sólidas com 25px de espessura */
- box-shadow: 0px 4px 20px 0px rgba(221, 21, 21, 0.719);;
- border-radius: 3px;
- border-color: rgba(255, 255, 255, 0.781);
+.iconMenu {
+  border: 3px solid;
+  /* As 4 bordas sólidas com 25px de espessura */
+  box-shadow: 0px 4px 20px 0px rgba(221, 21, 21, 0.719);
+  ;
+  border-radius: 3px;
+  border-color: rgba(255, 255, 255, 0.781);
 }
-.emptySpace{
-    border: 5px solid; /* As 4 bordas sólidas com 25px de espessura */
-    border-color: rgba(255, 255, 255, 0);
+
+.emptySpace {
+  border: 5px solid;
+  /* As 4 bordas sólidas com 25px de espessura */
+  border-color: rgba(255, 255, 255, 0);
 }

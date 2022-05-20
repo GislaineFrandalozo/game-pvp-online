@@ -1,8 +1,10 @@
-// LIB
+    // Resource
+    import ReactDOM from 'react-dom';
+    // Component React
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-//STYLE
+    // My component
+import { App } from './App';
+    //Style
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './style/main.css'

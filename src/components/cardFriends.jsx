@@ -1,7 +1,9 @@
+    // Components lib
 import { Card, Figure, Row, Col, Stack, Image } from "react-bootstrap";
+    // Style
 import avatar from "../style/avatar.jpg"
 
-export function CardFriends({ state }) {
+function CardFriends({ state }) {
   return (
     <Card border="danger" className="bg-dark">
       <Stack direction="horizontal">
@@ -13,13 +15,15 @@ export function CardFriends({ state }) {
           />
         </Card.Header>
 
-          <Card.Body>
+        <Card.Body>
           <Card.Title className="text-start text-white ">Amigo do User</Card.Title>
-            <p className="text-start text-white">{state}</p>
-          </Card.Body>
+          <p className="text-start text-white">{state}</p>
+        </Card.Body>
       </Stack>
-    
-      
+
+
     </Card>
   )
 }
+
+export { CardFriends }
