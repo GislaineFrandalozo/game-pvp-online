@@ -1,14 +1,11 @@
-    // Resource
+// Resource
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { request } from '../services/http/request';
 import { userStorage } from '../utils/userStorage';
-    // Component lib
-import { Col, Container, Row } from 'react-bootstrap'
-    // My component
-import { Aside } from "../components/aside";
-import { Main } from "../templates/mainAuth";
+// My component
+import { PageAuthTemplate } from "../templates/pageAuthTemplate";
 
 function PageLogin() {
   let navigate = useNavigate();
@@ -48,20 +45,7 @@ function PageLogin() {
     },
   }
   return (
-    <Container fluid >
-      <Row>
-        <Col xs={4} sm={5} className="bg-dark bg-gradient">
-          <Aside />
-        </Col>
-        <Col>
-          <Main
-            title={titleMain}
-            configForm={metadataForm}
-            navigate={navigateToPage}
-          />
-        </Col>
-      </Row>
-    </Container>
+      <PageAuthTemplate configPag={{titleMain, metadataForm, navigateToPage}} />
   )
 }
 

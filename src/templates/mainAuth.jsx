@@ -1,11 +1,17 @@
-    // Resource
+// Resource
 import { useNavigate } from "react-router-dom";
-    // Components lib
+// Components lib
 import { Button, Stack, Col, Row } from 'react-bootstrap'
-    // My components
+// My components
 import { FormGame } from "../components/form";
 
+import React, { useContext } from "react";
+// My component
+import Context from '../utils/contextReact'
+
 function Main({ title, configForm, navigate }) {
+  const dfgghf = useContext(Context);
+  console.log(dfgghf)
   let navigateReact = useNavigate();
   const navigateToPage = {
     text: navigate.text,
@@ -13,18 +19,24 @@ function Main({ title, configForm, navigate }) {
     handleClick: () => { navigateReact(`${navigate.routeNavigate}`); }
   }
   return (
-    <Stack gap={5} className="align-items-center">
-      <Row >
-        <Col className="h2 pt-5">{title}</Col>
-      </Row>
-      <FormGame configRequestForm={configForm.request} idInputs={configForm.createInputs} />
-      <Row className="align-items-center row-cols-1 text-center">
-        <Col className="h6 pb-3">{navigateToPage.text}</Col>
-        <Col>
-          <Button variant="outline-danger" onClick={navigateToPage.handleClick}>{navigateToPage.button}</Button>
-        </Col>
-      </Row>
-    </Stack>
+    <Row className="justify-content-center row-cols-1">
+      <Col className="h2 text-center pt-5 p-2 m-3">
+        {title}
+      </Col>
+      <Col xs={8} md={8} lg={6} className="justify-content-center p-4">
+        <FormGame
+          configRequestForm={configForm.request}
+          idInputs={configForm.createInputs} />
+      </Col>
+      <Col xs={9} className="h6 text-center pb-3">
+        {navigateToPage.text}
+      </Col>
+      <Col  className="text-center">
+        <Button variant="outline-danger" onClick={navigateToPage.handleClick}>
+          {navigateToPage.button}
+        </Button>
+      </Col>
+    </Row>
   )
 }
 

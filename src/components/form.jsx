@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { createObjectForm } from '../utils/createObjectForm';
 import { request } from '../services/http/request';
     // Components lib
-import { Button, Form, Stack } from 'react-bootstrap'
+import { Button, Col, Form, Row, Stack } from 'react-bootstrap'
 import { toast, ToastContainer } from 'react-toastify';
     // My components
 import { FormInputStack } from './formInputStack';
@@ -12,7 +12,7 @@ import { FormInputStack } from './formInputStack';
 function FormGame({ configRequestForm, idInputs }) {
   const [validated, setValidated] = useState(false);
   const handleSubmit = async (event) => {
-    const InputInvalid = "Verefique os campos!"
+    const InputInvalid = "Verifique os campos!"
 
     event.preventDefault()
     setValidated(true);
@@ -44,9 +44,9 @@ function FormGame({ configRequestForm, idInputs }) {
       validated={validated}
       className="align-items-center"
       onSubmit={handleSubmit}>
-      <Stack gap={4} className="align-items-center">
+      <Stack gap={2} className="align-items-center">
         <FormInputStack idInputs={idInputs} />
-        <Button variant="danger" className="w-50" type="submit">Enviar</Button>
+        <Button variant="danger" className="w-50 mt-4" type="submit">Enviar</Button>
       </Stack>
       <ToastContainer position="bottom-right" />
     </Form>

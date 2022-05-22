@@ -1,10 +1,7 @@
     // Resource lib
 import { useNavigate } from "react-router-dom";
-    // Components lib
-import { Col, Container, Row } from 'react-bootstrap'
     // My components
-import { Aside } from "../components/aside";
-import { Main } from "../templates/mainAuth";
+import { PageAuthTemplate } from "../templates/pageAuthTemplate";
 
 function PageSignUp() {
   let navigate = useNavigate()
@@ -26,20 +23,7 @@ function PageSignUp() {
     },
   }
   return (
-    <Container fluid >
-      <Row>
-        <Col xs={4} sm={5} className="bg-dark bg-gradient" >
-          <Aside />
-        </Col>
-        <Col>
-          <Main
-            title={titleMain}
-            configForm={metadataForm}
-            navigate={navigateToPage}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <PageAuthTemplate configPag={{titleMain, metadataForm, navigateToPage}} />
   )
 }
 
