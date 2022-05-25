@@ -3,9 +3,9 @@ import React, { createContext, useContext, useState } from 'react';
 const ThemeContext = createContext({});
 
 function ContadorProvider({children}) {
-  const [counter, setCounter] = useState({value: 0});
+  const [theme, setTheme] = useState("Dark");
   return (
-    <ThemeContext.Provider value={[counter, setCounter]}>
+    <ThemeContext.Provider value={[theme, setTheme]}>
       {children}
     </ThemeContext.Provider>
   );

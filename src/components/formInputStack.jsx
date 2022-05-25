@@ -20,9 +20,9 @@ function FormInputStack({ idInputs }) {
           alt="Prévia da imagem..." />
       </Col>
     return (
-      <Row>
+      <Row key={index}>
         <Col>
-          <Form.Group key={index}>
+          <Form.Group>
             <Form.Label >{label}</Form.Label>
             <Form.Control {...attributes} />
             <Form.Control.Feedback type="invalid">{feedback}</Form.Control.Feedback>

@@ -1,21 +1,19 @@
-    // My component
-import { useThemeContext } from '../utils/contextReact'
-    // Style
+import { Col, Row } from 'react-bootstrap';
+// My component
+import { TogleMode } from './toggleMode';
+// Style
 import "../style/asideForm.css"
 
 function Aside() {
-  let [total, setTotal] = useThemeContext();
-  let auxiliary = total.value + 1
-
-  return <aside>
-  <button onClick={() => {
-   
-    setTotal({ value: auxiliary })
-    }} >
-    {total.value}
-    
-    </button> 
-    </aside>
+    return (
+        <Row>
+            <aside>
+                <Col className='col-1 p-2'>
+                    <TogleMode />
+                </Col>
+            </aside>
+        </Row>
+    )
 }
 
 export { Aside }

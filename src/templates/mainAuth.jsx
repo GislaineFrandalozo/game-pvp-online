@@ -5,13 +5,7 @@ import { Button, Stack, Col, Row } from 'react-bootstrap'
 // My components
 import { FormGame } from "../components/form";
 
-import React, { useContext } from "react";
-// My component
-import Context from '../utils/contextReact'
-
 function Main({ title, configForm, navigate }) {
-  const dfgghf = useContext(Context);
-  console.log(dfgghf)
   let navigateReact = useNavigate();
   const navigateToPage = {
     text: navigate.text,
