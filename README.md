@@ -19,13 +19,15 @@
   
 ### 🔥 Iniciando o projeto
 
-> #### Servidor back end
+> #### Servidor (back end)
 > Primeiro você vai precisar **rodar o servidor na sua rede local**. Abaixo o link do projeto, no readme do mesmo você irá encontrar a descrição de como rodar em sua máquina.
 > [Clique aqui.](https://github.com/Muriel-Gasparini/flash-chat-io-be)
 
+(Nos passos seguintes eu já suponho que você esteja com a IDE e o node instalados na usa máquina).
+
 - 👍 Servidor rodando abra este projeto no terminal e digite:
-  * `$ yarn install`
-  *  `$ yarn start`
+  *  `$ npm install`, caso tenha yarn instalado digite `$ yarn`. 
+  *   `$ npm start` ,ou então no caso do yarn digite `$ yarn start`.
 
 Pronto! O projeto irá abrir no endereço <a href="http://localhost:3000/">http://localhost:3000/</a> utilizando seu navegador padrão!
 
