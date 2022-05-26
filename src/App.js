@@ -2,14 +2,14 @@
 import { RoutesForGame } from './routes';
 
 import React from 'react';
-import ContadorProvider from './utils/themeContext';
+import { Theme } from './utils/themeContext';
 
 
 function App() {
   return (
-    <ContadorProvider>
+    <Theme>
       <RoutesForGame />
-    </ContadorProvider>
+    </Theme>
   );
 }
 

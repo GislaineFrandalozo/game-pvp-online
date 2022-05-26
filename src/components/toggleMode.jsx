@@ -3,13 +3,15 @@ import DarkModeToggle from "react-dark-mode-toggle";
 import { useEffect, useState } from 'react';
 // My component
 import { useThemeContext } from '../utils/themeContext'
+import { objTheme } from "../style/themeMode";
 
 function TogleMode() {
-  const [isDarkMode, setIsDarkMode] = useState(() => false);
   let [theme, setTheme] = useThemeContext();
+  const [isDarkMode, setIsDarkMode] = useState(() => theme.stateToggle);
   useEffect(() => {
-    let varAux = isDarkMode ? "Light" : "Dark"
-    setTheme(varAux)
+    let mode = isDarkMode ? {...objTheme.Light}:{...objTheme.Dark}
+    localStorage.setItem('theme', `${mode.stateToggle}`);
+    setTheme(mode)
   }, [isDarkMode])
   return (
     <DarkModeToggle

@@ -1,7 +1,7 @@
 // Resource
 import { useNavigate } from "react-router-dom";
 // Components lib
-import { Button, Stack, Col, Row } from 'react-bootstrap'
+import { Button, Col, Row } from 'react-bootstrap'
 // My components
 import { FormGame } from "../components/form";
 
