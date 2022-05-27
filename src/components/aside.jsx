@@ -3,17 +3,25 @@ import { Col, Row } from 'react-bootstrap';
 import { TogleMode } from './toggleMode';
 // Style
 import "../style/asideForm.css"
+import { useThemeContext } from '../utils/themeContext';
 
 function Aside() {
-    return (
-        <Row>
-            <aside>
-                <Col className='col-1 p-2'>
-                    <TogleMode />
-                </Col>
-            </aside>
-        </Row>
-    )
+  const { isDarkEnabled, setIsDarkEnabled } = useThemeContext()
+  const handleToggleEvent = (checked) => {
+    setIsDarkEnabled(checked)
+  }
+  return (
+    <Row>
+      <aside>
+        <Col className='col-1 p-2'>
+          <TogleMode 
+            checked={isDarkEnabled} 
+            onChange={handleToggleEvent} 
+          />
+        </Col>
+      </aside>
+    </Row>
+  )
 }
 
 export { Aside }

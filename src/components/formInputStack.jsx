@@ -2,8 +2,10 @@
 import { createMetadataInput } from "../utils/createMetadataInputs"
 // Components lib
 import { Col, Form, Row, Image, Stack } from "react-bootstrap"
+import { Theme, useThemeContext } from "../utils/themeContext"
 
 function FormInputStack({ idInputs }) {
+  const { theme } = useThemeContext()
   const metadataInputs = createMetadataInput(idInputs)
   const inputs = metadataInputs.map(({
     label,
@@ -23,7 +25,7 @@ function FormInputStack({ idInputs }) {
       <Row key={index}>
         <Col>
           <Form.Group>
-            <Form.Label >{label}</Form.Label>
+            <Form.Label className={`${theme.text}`}>{label}</Form.Label>
             <Form.Control {...attributes} />
             <Form.Control.Feedback type="invalid">{feedback}</Form.Control.Feedback>
           </Form.Group>

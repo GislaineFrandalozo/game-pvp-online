@@ -2,10 +2,13 @@
 import { useNavigate } from "react-router-dom";
     // My components
 import { PageAuthTemplate } from "../templates/pageAuthTemplate";
+import { useThemeContext } from "../utils/themeContext";
 
 function PageSignUp() {
   let navigate = useNavigate()
+  const { isDarkEnabled } = useThemeContext()
   const titleMain = "Cadastro"
+  const titleMainClass = isDarkEnabled ? "text-light" : "text-dark"
   const navigateToPage = {
     text: "Já possui cadastro ?",
     button: "Entre aqui",
@@ -23,7 +26,7 @@ function PageSignUp() {
     },
   }
   return (
-    <PageAuthTemplate configPag={{titleMain, metadataForm, navigateToPage}} />
+    <PageAuthTemplate configPag={{titleMain, metadataForm, navigateToPage, titleMainClass}} />
   )
 }
 

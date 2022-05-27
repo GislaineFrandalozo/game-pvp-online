@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Button, Col, Row } from 'react-bootstrap'
 // My components
 import { FormGame } from "../components/form";
+import { useThemeContext } from "../utils/themeContext";
 
-function Main({ title, configForm, navigate }) {
+function Main({ title, titleClass, configForm, navigate }) {
+  const { theme } = useThemeContext()
   let navigateReact = useNavigate();
   const navigateToPage = {
     text: navigate.text,
@@ -14,7 +16,7 @@ function Main({ title, configForm, navigate }) {
   }
   return (
     <Row className="justify-content-center row-cols-1">
-      <Col className="h2 text-center pt-5 p-2 m-3">
+      <Col className={`${titleClass} h2 text-center pt-5 p-2 m-3`}>
         {title}
       </Col>
       <Col xs={8} md={8} lg={6} className="justify-content-center p-4">
@@ -22,7 +24,7 @@ function Main({ title, configForm, navigate }) {
           configRequestForm={configForm.request}
           idInputs={configForm.createInputs} />
       </Col>
-      <Col xs={9} className="h6 text-center pb-3">
+      <Col xs={9} className={`${theme.text} h6 text-center pb-3`}>
         {navigateToPage.text}
       </Col>
       <Col  className="text-center">

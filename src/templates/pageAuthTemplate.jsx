@@ -7,7 +7,7 @@ import { Main } from "../templates/mainAuth";
 import { useThemeContext } from "../utils/themeContext";
 
 function PageAuthTemplate({ configPag }) {
-  let useTheme = useThemeContext()[0];
+  let { theme } = useThemeContext();
   
   return (
     <Container fluid>
@@ -15,8 +15,9 @@ function PageAuthTemplate({ configPag }) {
         <Col xs={3} sm={3} md={4} lg={5} className="bg-dark bg-gradient">
         <Aside />
         </Col>
-        <Col className={useTheme.background} >
+        <Col className={theme.background} >
         <Main
+            titleClass={configPag.titleMainClass}
             title={configPag.titleMain}
             configForm={configPag.metadataForm}
             navigate={configPag.navigateToPage}

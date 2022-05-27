@@ -1,10 +1,12 @@
-export const objTheme = {
-  Dark: {
+export const THEMES = {
+  DARK: {
     stateToggle: false,
     background: "bg-dark",
+    text: "text-light"
   },
-  Light: {
+  LIGHT: {
     stateToggle: true,
     background: "bg-light",
+    text: "text-dark"
   },
 }
