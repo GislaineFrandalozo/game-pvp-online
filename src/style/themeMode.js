@@ -4,7 +4,7 @@ export const THEMES = {
     backgroundGradientON: "bg-dark bg-gradient",
     backgroundGradientOFF: "bg-dark",
     text: "text-light",
-    font: "#f8f9fa",
+    Colorfont: "#f8f9fa",
     colorFigma: "#3B4147",
   },
   LIGHT: {
@@ -13,7 +13,7 @@ export const THEMES = {
     backgroundGradientOFF: "bg-white",
     background: "bg-white bg-gradient",
     text: "text-dark",
-    font: "#212529",
+    Colorfont: "#212529",
     colorFigma: "#B2B7BB",
   },
 }

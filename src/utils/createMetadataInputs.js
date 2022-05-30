@@ -55,7 +55,8 @@ function createMetadataInput(idInputs) {
           type: "file",
           name: "photo",
           required: true,
-
+          id: "actual-btn",
+          hidden: true,
           accept: ".jpg, .jpeg, .png",
           onChange: (e) => {
             var preview = document.querySelector('img');
