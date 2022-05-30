@@ -1,12 +1,19 @@
 export const THEMES = {
   DARK: {
     stateToggle: false,
-    background: "bg-dark",
-    text: "text-light"
+    backgroundGradientON: "bg-dark bg-gradient",
+    backgroundGradientOFF: "bg-dark",
+    text: "text-light",
+    font: "#f8f9fa",
+    colorFigma: "#3B4147",
   },
   LIGHT: {
     stateToggle: true,
-    background: "bg-light",
-    text: "text-dark"
+    backgroundGradientON: "bg-secondary bg-gradient",
+    backgroundGradientOFF: "bg-white",
+    background: "bg-white bg-gradient",
+    text: "text-dark",
+    font: "#212529",
+    colorFigma: "#B2B7BB",
   },
 }

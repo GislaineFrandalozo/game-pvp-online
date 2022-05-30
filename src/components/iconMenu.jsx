@@ -1,5 +1,5 @@
     // Style
-import "../style/iconMenu.css"
+//import "../style/iconMenu.css"
 
 function IconMenu() {
   return (

@@ -8,7 +8,7 @@ const ThemeContext = createContext({
 
 function Theme({ children }) {
   const isDarkModeLocalStorage = localStorage.getItem("isDarkMode")
-  const [theme, setTheme] = useState({});
+  const [theme, setTheme] = useState(THEMES.LIGHT);
   const [isDarkEnabled, setIsDarkEnabled] = useState(false);
 
   const handleDarkLightThemes = (darkEnabled) => {
@@ -40,10 +40,10 @@ function Theme({ children }) {
   }, [])
 
   return (
-    <ThemeContext.Provider value={{ 
-      theme, 
-      setTheme, 
-      isDarkEnabled, 
+    <ThemeContext.Provider value={{
+      theme,
+      setTheme,
+      isDarkEnabled,
       handleDarkLightThemes,
       setIsDarkEnabled
     }}>

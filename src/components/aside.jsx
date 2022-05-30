@@ -10,6 +10,7 @@ function Aside() {
   const handleToggleEvent = (checked) => {
     setIsDarkEnabled(checked)
   }
+  const vet = ["a", "b"]
   return (
     <Row>
       <aside>
@@ -19,7 +20,7 @@ function Aside() {
             onChange={handleToggleEvent} 
           />
         </Col>
-      </aside>
+        </aside>
     </Row>
   )
 }

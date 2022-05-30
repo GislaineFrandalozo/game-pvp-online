@@ -12,10 +12,10 @@ function PageAuthTemplate({ configPag }) {
   return (
     <Container fluid>
       <Row>
-        <Col xs={3} sm={3} md={4} lg={5} className="bg-dark bg-gradient">
+        <Col xs={3} sm={3} md={4} lg={5} className={theme.backgroundGradientON}>
         <Aside />
         </Col>
-        <Col className={theme.background} >
+        <Col className={theme.backgroundGradientOFF} >
         <Main
             titleClass={configPag.titleMainClass}
             title={configPag.titleMain}
