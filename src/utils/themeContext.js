@@ -1,15 +1,13 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { THEMES, THEME_TYPES } from '../style/themeMode';
+import { THEMES } from '../style/themeMode';
+import { consultThemePreference } from './consultThemePreference';
 
-const ThemeContext = createContext({
-  isDarkEnabled: false,
-  theme: THEMES.LIGHT
-});
+const ThemeContext = createContext({});
 
-function Theme({ children }) {
+function Theme({ children, THEME, toggleValue }) {
   const isDarkModeLocalStorage = localStorage.getItem("isDarkMode")
-  const [theme, setTheme] = useState(THEMES.LIGHT);
-  const [isDarkEnabled, setIsDarkEnabled] = useState(false);
+  const [theme, setTheme] = useState(THEME);
+  const [isDarkEnabled, setIsDarkEnabled] = useState(toggleValue);
 
   const handleDarkLightThemes = (darkEnabled) => {
     setTheme(darkEnabled ? THEMES.DARK : THEMES.LIGHT)
@@ -21,7 +19,7 @@ function Theme({ children }) {
 
   useEffect(() => {
     // onchange
-    const prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)')
+    const prefersColorSchemeDark = consultThemePreference()
     const onPrefersColorSchemeDarkChange = (e) => {
       localStorage.setItem("isDarkMode", e.matches)
       setIsDarkEnabled(e.matches)

@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Col, Form, Row, Stack } from "react-bootstrap"
+import { Col, Form, Row } from "react-bootstrap"
 import styled from "styled-components";
 import { useThemeContext } from '../utils/themeContext';
 
@@ -12,9 +11,8 @@ let ColStyled = styled(Col)`
 }
  `
 
-function FormLabelStyle({ forID, text, idLabel }) {
+function FormLabelStyle({ forID, text }) {
   const { theme } = useThemeContext()
-  console.log(forID)
   if (forID === "actual-btn") {
     return (
       <Row className="row-cols-1 justify-content-start align-items-center">
@@ -22,7 +20,7 @@ function FormLabelStyle({ forID, text, idLabel }) {
           <p className={`${theme.text} mt-2`}>{text}</p>
         </Col>
         <ColStyled context={theme} className="text-center" xs={{ offset: 1 }} sm={10}>
-          <Form.Label className={`${theme.text} mt-2`} for={forID}>upload</Form.Label>
+          <Form.Label className={`${theme.text} mt-2`} htmlFor={forID}>upload</Form.Label>
         </ColStyled>
       </Row>
     )

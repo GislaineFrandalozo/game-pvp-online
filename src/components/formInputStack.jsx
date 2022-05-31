@@ -21,7 +21,7 @@ function FormInputStack({ idInputs }) {
       <Row key={index}>
         <Col>
           <Form.Group>
-            <FormLabelStyle forID={attributes.id} idLabel={index} text={label}/>
+            <FormLabelStyle forID={attributes.id} text={label}/>
           <FormControlStyle globalAttribute={attributes}/>
             <Form.Control.Feedback type="invalid">{feedback}</Form.Control.Feedback>
           </Form.Group>
