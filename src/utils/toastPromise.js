@@ -9,7 +9,7 @@ function toastPromise(callback, configPromise) {
       },
       icon: "😄",
       theme: "dark",
-      delay: 100
+   
     },
     success: {
       render() {
@@ -20,8 +20,12 @@ function toastPromise(callback, configPromise) {
       delay: 700
     },
     error: {
-      render({ data }) {
-        return data.response.data.error
+      render({data}) {
+        
+        if(data.response !== undefined ){
+          return data.response.data.error
+        }
+        return "Erro! Falha na conexão com o servidor."
       },
       icon: "👎",
       theme: "dark",
