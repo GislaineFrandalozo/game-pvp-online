@@ -20,7 +20,6 @@ function FormGame({ configRequestForm, idInputs }) {
       let json = {}
       for (let input = 0; input < idInputs.length; input++) {
         let inputTag = event.target[input]
-        console.log("ffffffff")
         if (inputTag.checkValidity() === false) {
           event.stopPropagation();
           throw new Error("InputValueInvalid")

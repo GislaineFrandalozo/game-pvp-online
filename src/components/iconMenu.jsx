@@ -3,7 +3,7 @@
 
 function IconMenu() {
   return (
-    <div className="pt-3" >
+    <div className="" >
       <div className="iconMenu ">
       </div>
       <div className="emptySpace">
