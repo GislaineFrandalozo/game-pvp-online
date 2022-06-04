@@ -1,28 +1,31 @@
-import { Button, Col, FormControl, InputGroup } from "react-bootstrap"
-import styled from "styled-components"
-
-const StyledInputChat = styled(Col)`
-background: red;
-`
-
-
+import { Button, Col, Figure, FormControl, InputGroup } from "react-bootstrap"
+import ArrowDark from '../svg/ArrowDark.svg'
+import ArrowLight from '../svg/ArrowLight.svg'
+import { useThemeContext } from "../utils/themeContext";
 function TextArea() {
+  const { theme } = useThemeContext()
+  let color = theme.stateToggle === true ? ArrowLight : ArrowDark;
+  const arrowSvg = <Figure.Image src={color} />
   return (
-    <StyledInputChat  className="align-items-center p-3" > 
-     <InputGroup className="">
-    <FormControl
-    className="mx-2"
-    as="textarea"
-      placeholder="Recipient's username"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-      />
-   <Button variant="secondary" className="mx-1" id="button-addon2">
-      {">"}
-    </Button>
-  </InputGroup>
-  </StyledInputChat>
-      )
+    <>
+      <InputGroup className="align-self-center">
+        <FormControl
+          className="mx-2 p-1"
+          as="textarea"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <Button
+          variant="transparent"
+          size="sm"
+          className="mx-2 d-flex justify-content-center align-items-center"
+          id="button-addon2">
+          {arrowSvg}
+        </Button>
+      </InputGroup>
+    </>
+  )
 }
 
 export { TextArea }

@@ -1,34 +1,46 @@
-    // Resource
+// Resource
 import { useState } from "react";
-    // Component lib
-import { Col, Offcanvas, Image, Figure } from "react-bootstrap";
-    // My component
-import { IconMenu } from "./iconMenu";
-import { MenuFriends } from "./menuFriends";
-    // Style
+// Component lib
+import { Col, Offcanvas, Row } from "react-bootstrap";
+// My component
+import { ButtonOpenSidebar, IconMenu } from "./buttonOpenSidebar";
+// Style
 import "../style/sidebar.css"
+import { HandleToggle } from "./handleToggle";
+import { CardUser } from "./cardUser";
+import { useThemeContext } from "../utils/themeContext";
 
 function SidebarUser() {
+  const { theme } = useThemeContext()
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);
   return (
-    <Col className="bg-dark px-0" >
-      <div onClick={toggleShow} className="sidebar h-100 p-0 bg-white bg-gradient">
-        <IconMenu />
-      </div>
-      <Offcanvas className="bg-gradient" show={show} onHide={handleClose} placement={"end"} scroll={true} backdrop={true}>
-        <Offcanvas.Header closeButton className="bg-dark align-items-start">
-         
-          <Offcanvas.Title className="w-100 h-100 text-white justify-content-start ">User user user user user</Offcanvas.Title>
+    <Row className={`${theme.backgroundGradientON} h-100 p-0 flex-column align-items-center`} >
+      <ButtonOpenSidebar onClick={toggleShow} colorContext={theme.stateToggle} />
+      <Col>
+        <Offcanvas
+          className={` ${theme.backgroundGradientON} 
+        ${theme.text}
+        `}
+          show={show}
+          onHide={handleClose}
+          placement={"end"}
+          scroll={true}
+          backdrop={true}>
+          <Offcanvas.Header closeButton className="align-items-start">
+            <HandleToggle />
+            <Offcanvas.Title className="justify-content-start ">Online</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
 
-        </Offcanvas.Header>
-        <Offcanvas.Body className="bg-dark bg-gradient">
-          <MenuFriends />
-        </Offcanvas.Body>
-      </Offcanvas>
-   </Col>
-  
+            <CardUser />
+          </Offcanvas.Body>
+        </Offcanvas>
+      </Col>
+    </Row>
+
   )
 }
 

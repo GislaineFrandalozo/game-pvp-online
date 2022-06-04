@@ -9,16 +9,19 @@ import { StyleMainChat } from "../style/styleMainChat";
 
 function HomePage() {
   return (
-    <Container className="vh-100 bg-danger px-0" fluid >
-     <Row className="h-100 px-0">
-
-        <Col xs={10} className="d-flex flex-column">
-          <StyleMainChat header={<CardUser />} body={<BodyChat />} footer={<TextArea />} />
+    <Container className="vh-100 vw-100 p-0" fluid >
+      <Row className="h-100 p-0 justify-content-center w-100">
+        <Col xs={10} lg={11}>
+          <StyleMainChat
+            header={<CardUser />}
+            body={<BodyChat />}
+            footer={<TextArea />}
+          />
         </Col>
-       
-        <SidebarUser />
-      
-     </Row>
+        <Col className="p-0">
+          <SidebarUser />
+        </Col>
+      </Row>
     </Container >
   )
 }
