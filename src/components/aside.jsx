@@ -1,19 +1,19 @@
 import { Col, Row } from 'react-bootstrap';
 // My component
-import { TogleMode } from './toggleMode';
-// Style
-import "../style/asideForm.css"
-import { useThemeContext } from '../utils/themeContext';
 import { HandleToggle } from './handleToggle';
+// Style
+import styled from 'styled-components';
 
+const StyledAside = styled.aside`
+height: 100vh;
+` 
 function Aside() {
 
-  const vet = ["a", "b"]
   return (
     <Row>
-      <aside>
+      <StyledAside>
        <HandleToggle />
-        </aside>
+        </StyledAside>
     </Row>
   )
 }

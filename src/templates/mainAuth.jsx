@@ -15,20 +15,20 @@ function Main({ title, titleClass, configForm, navigate }) {
     handleClick: () => { navigateReact(`${navigate.routeNavigate}`); }
   }
   return (
-    <Row className="justify-content-center row-cols-1">
-      <Col className={`${titleClass} h2 text-center pt-5 p-2 m-3`}>
+    <Row className="justify-content-center px-2 row-cols-1">
+      <Col className={`${titleClass} h2 text-center pt-5 p-2 m-0`}>
         {title}
       </Col>
-      <Col xs={8} md={8} lg={6} className="justify-content-center p-4">
+      <Col xs={11} sm={10} md={8} className="justify-content-center py-4">
         <FormGame
           configRequestForm={configForm.request}
           idInputs={configForm.createInputs} />
       </Col>
-      <Col xs={9} className={`${theme.text} h6 text-center pb-3`}>
+      <Col xs={11} className={`${theme.text} h6 text-center pb-3`}>
         {navigateToPage.text}
       </Col>
-      <Col  className="text-center">
-        <Button variant="outline-danger" onClick={navigateToPage.handleClick}>
+      <Col xs={11} sm={7} md={5} className="text-center">
+        <Button variant="outline-danger" className="w-100" onClick={navigateToPage.handleClick}>
           {navigateToPage.button}
         </Button>
       </Col>

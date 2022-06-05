@@ -5,10 +5,9 @@ import { Col, Container, Row } from "react-bootstrap"
 import { Aside } from "../components/aside";
 import { Main } from "../templates/mainAuth";
 import { useThemeContext } from "../utils/themeContext";
-
+ 
 function PageAuthTemplate({ configPag }) {
   let { theme } = useThemeContext();
-  
   return (
     <Container fluid>
       <Row>

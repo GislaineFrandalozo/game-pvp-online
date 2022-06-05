@@ -48,7 +48,7 @@ function PageLogin() {
     },
   }
   return (
-      <PageAuthTemplate configPag={{titleMain, metadataForm, navigateToPage, titleMainClass}} />
+    <PageAuthTemplate configPag={{ titleMain, metadataForm, navigateToPage, titleMainClass }} />
   )
 }
 
