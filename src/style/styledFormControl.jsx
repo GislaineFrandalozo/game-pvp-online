@@ -26,7 +26,7 @@ border: 0px;
 }
 `;
 
-function FormControlStyle({globalAttribute}) {
+function StyledFormControl({globalAttribute}) {
   const { theme } = useThemeContext()
   useEffect(() => {
     StyledInput = styled(Form.Control)`
@@ -55,4 +55,4 @@ border: 0px;
   return <StyledInput state={theme} {...globalAttribute} />
 }
 
-export { FormControlStyle }
+export { StyledFormControl }

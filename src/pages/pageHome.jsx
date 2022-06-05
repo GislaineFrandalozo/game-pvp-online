@@ -1,16 +1,23 @@
 // Component lib
 import { Col, Container, Row } from "react-bootstrap";
-import { BodyChat } from "../components/bodyChat";
-import { CardUser } from "../components/cardUser";
 // My component
-import { SidebarUser } from "../components/sideBar";
+import { StyleMainChat } from "../style/styledMainChat";
+import { CardUser } from "../components/cardUser";
+import { BodyChat } from "../components/bodyChat";
 import { TextArea } from "../components/textArea";
-import { StyleMainChat } from "../style/styleMainChat";
+import { SidebarUser } from "../components/sideBar";
 
 function HomePage() {
   return (
-    <Container className="vh-100 vw-100 p-0" fluid >
-      <Row className="h-100 p-0 justify-content-center w-100">
+    <Container
+      fluid
+      className="vh-100 vw-100 p-0" >
+      <Row
+        className="
+        h-100 
+        p-0 
+        justify-content-center 
+        w-100">
         <Col xs={10} lg={11}>
           <StyleMainChat
             header={<CardUser />}

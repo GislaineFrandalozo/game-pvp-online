@@ -8,6 +8,7 @@ import { Button, Col, Form, Row, Stack } from 'react-bootstrap'
 import { toast, ToastContainer } from 'react-toastify';
     // My components
 import { FormInputStack } from './formInputStack';
+import { StyledButtonDanger } from '../style/styledButton';
 
 function FormGame({ configRequestForm, idInputs }) {
   const [validated, setValidated] = useState(false);
@@ -45,7 +46,9 @@ function FormGame({ configRequestForm, idInputs }) {
       onSubmit={handleSubmit}>
       <Stack gap={2} className="align-items-center">
         <FormInputStack idInputs={idInputs} />
-        <Button variant="danger" className="w-50 mt-4" type="submit">Enviar</Button>
+        <Col className="w-50 h-100 mt-4">
+        <StyledButtonDanger />
+        </Col>
       </Stack>
       <ToastContainer position="bottom-right" />
     </Form>
