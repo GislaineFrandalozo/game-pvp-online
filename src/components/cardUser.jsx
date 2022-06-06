@@ -7,8 +7,8 @@ function CardUser () {
     <Figure>
     <Figure.Image
       roundedCircle
-      width={80}
-      height={80}
+      width={70}
+      height={70}
       src={avatar}
     />
   </Figure>

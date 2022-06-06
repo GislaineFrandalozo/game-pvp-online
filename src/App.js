@@ -1,11 +1,11 @@
     // My component
-import { RoutesForGame } from './routes';
+import { HandleRoutes } from './handleRoutes';
 
 import React from 'react';
 
 function App() {
   return (
-      <RoutesForGame />
+      <HandleRoutes />
   );
 }
 

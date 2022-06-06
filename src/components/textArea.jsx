@@ -7,7 +7,6 @@ function TextArea() {
   let color = theme.stateToggle === true ? ArrowLight : ArrowDark;
   const arrowSvg = <Figure.Image src={color} />
   return (
-    <>
       <InputGroup className="align-self-center">
         <FormControl
           className="mx-2 p-1"
@@ -24,7 +23,6 @@ function TextArea() {
           {arrowSvg}
         </Button>
       </InputGroup>
-    </>
   )
 }
 
