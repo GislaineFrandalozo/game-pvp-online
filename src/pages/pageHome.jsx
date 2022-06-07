@@ -6,8 +6,10 @@ import { CardUser } from "../components/cardUser";
 import { BodyChat } from "../components/bodyChat";
 import { TextArea } from "../components/textArea";
 import { SidebarUser } from "../components/sideBar";
+import { useAuthContext } from "../utils/authContext";
 
 function HomePage() {
+  
   return (
     <Container
       fluid

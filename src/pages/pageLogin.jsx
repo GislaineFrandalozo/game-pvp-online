@@ -7,8 +7,10 @@ import { userStorage } from '../utils/userStorage';
 // My component
 import { PageAuthTemplate } from "../templates/pageAuthTemplate";
 import { useThemeContext } from "../utils/themeContext";
+import { useAuthContext } from "../utils/authContext";
 
 function PageLogin() {
+  let { token, setToken } = useAuthContext()
   const { isDarkEnabled } = useThemeContext()
   let navigate = useNavigate();
   const titleMain = "Entrar"
@@ -27,23 +29,9 @@ function PageLogin() {
         success: "Suas credências estão corretas! Aguarde.",
       },
       callbackAfterPost: async (response) => {
-        const requestAuth = new request()
-        const headers = {
-          Authorization: `Bearer ${response.data.token}`
-        }
-        requestAuth.get("/me", headers)
-          .then((response) => {
-            const setUserStorage = new userStorage()
-            setUserStorage.set(response.data.user)
-            navigate(`/home`)
-          })
-          .catch((error) => {
-            localStorage.clear()
-            toast.error("Algo deu errado no nosso servidor, estamos tentando resolver!", {
-              theme: "dark",
-              icon: "🙁"
-            })
-          })
+      localStorage.setItem("token" ,response.data.token)
+      setToken(response.data.token)
+      navigate(`/home`)
       }
     },
   }
