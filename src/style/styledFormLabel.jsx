@@ -1,6 +1,6 @@
 import { Col, Form, Row } from "react-bootstrap"
 import styled from "styled-components";
-import { useThemeContext } from '../utils/themeContext';
+import { useThemeContext } from '../context/themeContext';
 
 let ColStyled = styled(Col)`
  background: ${props => props.context.colorFigma};

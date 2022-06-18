@@ -1,7 +1,5 @@
     // My component
-import { HandleRoutes } from './handleRoutes';
-
-import React from 'react';
+import { HandleRoutes } from './routes';
 
 function App() {
   return (

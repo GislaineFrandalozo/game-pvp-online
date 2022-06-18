@@ -6,7 +6,7 @@ import { CardUser } from "../components/cardUser";
 import { BodyChat } from "../components/bodyChat";
 import { TextArea } from "../components/textArea";
 import { SidebarUser } from "../components/sideBar";
-import { useAuthContext } from "../utils/authContext";
+import { useAuthContext } from "../context/authContext";
 
 function HomePage() {
   

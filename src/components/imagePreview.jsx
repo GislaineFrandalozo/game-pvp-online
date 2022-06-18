@@ -1,5 +1,5 @@
 import { Col, Image } from "react-bootstrap"
-import { useThemeContext } from "../utils/themeContext"
+import { useThemeContext } from "../context/themeContext"
 
 function ImagePreview() {
   const { theme } = useThemeContext()

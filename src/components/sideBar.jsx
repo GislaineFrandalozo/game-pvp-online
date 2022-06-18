@@ -7,7 +7,7 @@ import { ButtonOpenSidebar } from "./buttonOpenSidebar";
 // Style
 import { HandleToggle } from "./handleToggle";
 import { CardUser } from "./cardUser";
-import { useThemeContext } from "../utils/themeContext";
+import { useThemeContext } from "../context/themeContext";
 
 function SidebarUser() {
   const { theme } = useThemeContext()

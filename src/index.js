@@ -1,10 +1,9 @@
-    // Resource
-    import ReactDOM from 'react-dom';
-    // Component React
+// Resource
+import ReactDOM from 'react-dom';
+// Component React
 import React from 'react';
-    // My component
 import { App } from './App';
-    //Style
+//Style
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 

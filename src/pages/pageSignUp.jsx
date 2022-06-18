@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
     // My components
 import { PageAuthTemplate } from "../templates/pageAuthTemplate";
-import { useThemeContext } from "../utils/themeContext";
+import { useThemeContext } from "../context/themeContext";
 
 function PageSignUp() {
   let navigate = useNavigate()

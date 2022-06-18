@@ -1,42 +1,50 @@
 // Resource
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
-import { request } from '../services/http/request';
-import { userStorage } from '../utils/userStorage';
 // My component
 import { PageAuthTemplate } from "../templates/pageAuthTemplate";
-import { useThemeContext } from "../utils/themeContext";
-import { useAuthContext } from "../utils/authContext";
-
+import { useThemeContext } from "../context/themeContext";
+import { useAuthContext } from "../context/authContext";
+import { H2center } from "../components/h2center";
+import { FormGame } from "../components/form";
+import { SectionH6AndButton } from "../useComponents/sectionH6AndButton";
+import { signIn } from "../services/baseURL";
+import { authenticated, loding } from "../utils/feedbackPhrase";
+import { handleStorage } from "../utils/handleStorage";
+import { tokenAuth } from '../utils/keyStorage';
 function PageLogin() {
   let { token, setToken } = useAuthContext()
   const { isDarkEnabled } = useThemeContext()
   let navigate = useNavigate();
-  const titleMain = "Entrar"
-  const titleMainClass = isDarkEnabled ? 'text-light' : 'text-dark'
-  const navigateToPage = {
-    text: "Ainda não possui cadastro ?",
-    button: "Cadastre-se aqui",
-    routeNavigate: `/sign-up`,
-  };
-  const metadataForm = {
-    createInputs: ["email", "password"],
-    request: {
-      route: "/sign-in",
-      toastPromiseConfiguration: {
-        pending: "Carregando, aguarde!",
-        success: "Suas credências estão corretas! Aguarde.",
-      },
-      callbackAfterPost: async (response) => {
-      localStorage.setItem("token" ,response.data.token)
-      setToken(response.data.token)
+  const title = "Entrar"
+  const request = {
+    route: signIn,
+    toastPromiseConfiguration: {
+      pending: loding,
+      success: authenticated,
+    },
+    callbackAfterPost: (response) => {
+      handleStorage.set(tokenAuth)
+      localStorage.setItem("token", response.data.token)
+      setToken(true)
       navigate(`/home`)
-      }
     },
   }
   return (
-    <PageAuthTemplate configPag={{ titleMain, metadataForm, navigateToPage, titleMainClass }} />
+    <PageAuthTemplate 
+    contentMain={ 
+      <>
+      <H2center content={title} />
+      <FormGame
+        configRequestForm={request}
+        idInputs={["email", "password"]} />
+      <SectionH6AndButton useSection={{
+        text: "Ainda não possui cadastro ?",
+        button: "Cadastre-se aqui",
+        handleClick: () => { navigate(`/sign-up`); }
+      }} />
+    </>
+    }/>
   )
 }
 

@@ -1,11 +1,13 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { THEMES } from '../style/themeMode';
-import { consultThemePreference } from './consultThemePreference';
+import { checkSystemForThemePreferences } from '../utils/consultThemePreference';
+import { themeDark } from '../utils/keyStorage';
+import { handleStorage } from '../utils/handleStorage';
 
 const ThemeContext = createContext({});
 
 function Theme({ children, THEME, toggleValue }) {
-  const isDarkModeLocalStorage = localStorage.getItem("isDarkMode")
+  const isDarkModeLocalStorage = handleStorage.get(themeDark)
   const [theme, setTheme] = useState(THEME);
   const [isDarkEnabled, setIsDarkEnabled] = useState(toggleValue);
 
@@ -18,14 +20,12 @@ function Theme({ children, THEME, toggleValue }) {
   }, [isDarkEnabled])
 
   useEffect(() => {
-    // onchange
-    const prefersColorSchemeDark = consultThemePreference()
+    const prefersColorSchemeDark = checkSystemForThemePreferences()
     const onPrefersColorSchemeDarkChange = (e) => {
-      localStorage.setItem("isDarkMode", e.matches)
+      handleStorage.set(themeDark, e.matches)
       setIsDarkEnabled(e.matches)
     }
     prefersColorSchemeDark.addEventListener("change", onPrefersColorSchemeDarkChange);
-    // default value
     if (isDarkModeLocalStorage !== null) {
       setIsDarkEnabled(isDarkModeLocalStorage === "true")
       return;

@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 
-import { useThemeContext } from '../utils/themeContext';
+import { useThemeContext } from '../context/themeContext';
 
 function StyleMainChat({ header, body, footer }) {
   const { theme } = useThemeContext()

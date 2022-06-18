@@ -1,5 +1,5 @@
 import { Col } from "react-bootstrap"
-import { useThemeContext } from "../utils/themeContext"
+import { useThemeContext } from "../context/themeContext"
 import { TogleMode } from "./toggleMode"
 
 function HandleToggle() {

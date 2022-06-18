@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from "react-bootstrap"
-import { useThemeContext } from '../utils/themeContext';
+import { useThemeContext } from '../context/themeContext';
 import { useEffect } from 'react';
 
 let StyledInput = styled(Form.Control)`

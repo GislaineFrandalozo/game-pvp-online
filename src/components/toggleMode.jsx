@@ -1,7 +1,7 @@
 // Component lib
 import DarkModeToggle from "react-dark-mode-toggle";
 import { useEffect, useState } from 'react';
-import { useThemeContext } from "../utils/themeContext";
+import { useThemeContext } from "../context/themeContext";
 // My component
 
 function TogleMode({ checked = null, onChange }) {

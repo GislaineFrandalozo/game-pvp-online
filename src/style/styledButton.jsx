@@ -1,6 +1,6 @@
 //Resource
 import { Button } from "react-bootstrap"
-import { useThemeContext } from "../utils/themeContext"
+import { useThemeContext } from "../context/themeContext"
 
 function StyledButtonDanger({ color = "danger", text = "Enviar" }) {
   const { theme } = useThemeContext()

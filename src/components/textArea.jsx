@@ -1,7 +1,7 @@
 import { Button, Col, Figure, FormControl, InputGroup } from "react-bootstrap"
 import ArrowDark from '../svg/ArrowDark.svg'
 import ArrowLight from '../svg/ArrowLight.svg'
-import { useThemeContext } from "../utils/themeContext";
+import { useThemeContext } from "../context/themeContext";
 function TextArea() {
   const { theme } = useThemeContext()
   let color = theme.stateToggle === true ? ArrowLight : ArrowDark;

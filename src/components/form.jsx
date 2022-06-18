@@ -1,12 +1,12 @@
-    // Resource
+// Resource
 import { useState } from 'react';
 
 import { createObjectForm } from '../utils/createObjectForm';
-import { request } from '../services/http/request';
-    // Components lib
-import { Button, Col, Form, Row, Stack } from 'react-bootstrap'
+import { request } from '../services/http/interfaceRequest';
+// Components lib
+import { Col, Form, Row, Stack } from 'react-bootstrap'
 import { toast, ToastContainer } from 'react-toastify';
-    // My components
+// My components
 import { FormInputStack } from './formInputStack';
 import { StyledButtonDanger } from '../style/styledButton';
 
@@ -39,19 +39,23 @@ function FormGame({ configRequestForm, idInputs }) {
     }
   }
   return (
-    <Form
-      noValidate
-      validated={validated}
-      className="align-items-center"
-      onSubmit={handleSubmit}>
-      <Stack gap={2} className="align-items-center">
-        <FormInputStack idInputs={idInputs} />
-        <Col className="w-50 h-100 mt-4">
-        <StyledButtonDanger />
-        </Col>
-      </Stack>
-      <ToastContainer position="bottom-right" />
-    </Form>
+    <Row className="justify-content-center">
+      <Col xs={11} sm={10} md={8} className="justify-content-center py-4">
+        <Form
+          noValidate
+          validated={validated}
+          className="align-items-center"
+          onSubmit={handleSubmit}>
+          <Stack gap={2} className="align-items-center">
+            <FormInputStack idInputs={idInputs} />
+            <Col className="w-50 h-100 mt-4">
+              <StyledButtonDanger />
+            </Col>
+          </Stack>
+          <ToastContainer position="bottom-right" />
+        </Form>
+      </Col>
+    </Row>
   )
 }
 
