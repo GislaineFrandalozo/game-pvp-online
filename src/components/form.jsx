@@ -7,14 +7,14 @@ import { request } from '../services/http/interfaceRequest';
 import { Col, Form, Row, Stack } from 'react-bootstrap'
 import { toast, ToastContainer } from 'react-toastify';
 // My components
-import { FormInputStack } from './formInputStack';
+import { FormInputStack, MountInputStack } from './formInputStack';
 import { StyledButtonDanger } from '../style/styledButton';
 
 function FormGame({ configRequestForm, idInputs }) {
   const [validated, setValidated] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(true)
   const handleSubmit = async (event) => {
     const InputInvalid = "Verifique os campos!"
-
     event.preventDefault()
     setValidated(true);
     try {
@@ -38,6 +38,7 @@ function FormGame({ configRequestForm, idInputs }) {
       }
     }
   }
+
   return (
     <Row className="justify-content-center">
       <Col xs={11} sm={10} md={8} className="justify-content-center py-4">
@@ -47,9 +48,9 @@ function FormGame({ configRequestForm, idInputs }) {
           className="align-items-center"
           onSubmit={handleSubmit}>
           <Stack gap={2} className="align-items-center">
-            <FormInputStack idInputs={idInputs} />
+            <MountInputStack handleDisabledButton={setDisabledButton} idInputs={idInputs} />
             <Col className="w-50 h-100 mt-4">
-              <StyledButtonDanger />
+              <StyledButtonDanger disabledForm={disabledButton}/>
             </Col>
           </Stack>
           <ToastContainer position="bottom-right" />

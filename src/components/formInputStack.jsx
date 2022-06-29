@@ -6,9 +6,16 @@ import { Col, Form, Row } from "react-bootstrap"
 import { StyledFormControl } from '../style/styledFormControl';
 import { StyledFormLabel } from "../style/styledFormLabel";
 import { ImagePreview } from "./imagePreview";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
-function FormInputStack({ idInputs }) {
+function MountInputStack({ handleDisabledButton, idInputs }) {
   const metadataInputs = createMetadataInput(idInputs)
+  const [validate, setValidate] = useState(true)
+  const stackInputs = document.querySelectorAll('.controlInput')
+  console.log(stackInputs)
+
+
   return (
     <Col>
       {metadataInputs.map(({
@@ -22,7 +29,7 @@ function FormInputStack({ idInputs }) {
               <Form.Group>
                 <StyledFormLabel forID={attributes.id} text={label} />
                 <StyledFormControl globalAttribute={attributes} />
-                <Form.Control.Feedback type="invalid">{feedback}</Form.Control.Feedback>
+
               </Form.Group>
             </Col>
             {attributes.name === "photo" && <ImagePreview />}
@@ -33,4 +40,4 @@ function FormInputStack({ idInputs }) {
   )
 }
 
-export { FormInputStack }
+export { MountInputStack }

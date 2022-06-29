@@ -1,20 +1,18 @@
-import { Col, Row } from 'react-bootstrap';
-// My component
-import { HandleToggle } from './handleToggle';
+import { Row } from 'react-bootstrap';
 // Style
 import styled from 'styled-components';
 
 const StyledAside = styled.aside`
 height: 100vh;
-` 
-function Aside() {
+`
+function Aside({ children }) {
 
   return (
-    <Row>
-      <StyledAside>
-       <HandleToggle />
-        </StyledAside>
-    </Row>
+    <StyledAside>
+      <Row>
+        {children}
+      </Row>
+    </StyledAside>
   )
 }
 

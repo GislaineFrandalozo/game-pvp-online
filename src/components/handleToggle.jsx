@@ -8,7 +8,7 @@ function HandleToggle() {
     setIsDarkEnabled(checked)
   }
   return (
-    <Col className='col-1 p-2'>
+    <Col className='p-2'>
     <TogleMode 
       checked={isDarkEnabled} 
       onChange={handleToggleEvent} 

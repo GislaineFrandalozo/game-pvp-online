@@ -26,7 +26,16 @@ border: 0px;
 }
 `;
 
-function StyledFormControl({globalAttribute}) {
+function StyledFormControl({ change, globalAttribute }) {
+  
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    const inputTag = e.target
+    console.log(inputTag.checkValidity())
+    if (inputTag.checkValidity() === true) {
+      console.log("xxx")
+    }
+  }
   const { theme } = useThemeContext()
   useEffect(() => {
     StyledInput = styled(Form.Control)`
@@ -52,7 +61,7 @@ border: 0px;
 }
 `;
   }, [theme])
-  return <StyledInput state={theme} {...globalAttribute} />
+  return <StyledInput onChange={change} state={theme} {...globalAttribute} />
 }
 
 export { StyledFormControl }
